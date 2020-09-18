@@ -18,6 +18,7 @@ The MVP version of the site will contain a model for theatres and movies. These 
 - Adding a user model <br>
 - Proctecting the Admin routes <br>
 - Full freedom for adding showtimes <br>
+- Search functionallity <br>
 - Bootstrap carousel for movie images <br>
 - API for theatres and movie listings <br>
 - API for YouTube movie trailers<br>
