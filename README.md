@@ -11,9 +11,9 @@ Tuesday: All front end pages framed out with minimal CSS, all pages may not be a
 Wednesday: MVP without CSS.
 Thursday: CSS and stretch goals.
 # Stretch Goals
-Adding a user model
-Proctecting the Admin routes
-Full freedom for adding showtimes
-Bootstrap carousel for movie images
-API for theatres and movie listings
-API for YouTube movie trailers
+- Adding a user model <br>
+- Proctecting the Admin routes <br>
+- Full freedom for adding showtimes <br>
+- Bootstrap carousel for movie images <br>
+- API for theatres and movie listings <br>
+- API for YouTube movie trailers<br>
