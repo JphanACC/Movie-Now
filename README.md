@@ -6,10 +6,10 @@ The movie pages will show all of the theatres it is shown in as well as a descri
 # MVP
 The MVP version of the site will contain a model for theatres and movies. These models will have full CRUD functionality and will be linked in a many-to-many relationship. A site vistor will be able to view movies and theatres in the database and select the movie that they wish to see. The admin route will be unprotected. The admin will have a limited menu of showtime options. There will not be a user model.
 # Milestones
-Monday: Server running, Theatre and Movie models built, Admin routes able to add and edit.
-Tuesday: All front end pages framed out with minimal CSS, all pages may not be able to reference database, Movie and Theatre show page and ticket confirmation page fully functional.
-Wednesday: MVP without CSS.
-Thursday: CSS and stretch goals.
+- Monday: Server running, Theatre and Movie models built, Admin routes able to add and edit. <br>
+- Tuesday: All front end pages framed out with minimal CSS, all pages may not be able to reference database, Movie and Theatre show page and ticket confirmation page fully - functional. <br>
+- Wednesday: MVP without CSS. <br>
+- Thursday: CSS and stretch goals. <br>
 # Stretch Goals
 - Adding a user model <br>
 - Proctecting the Admin routes <br>
