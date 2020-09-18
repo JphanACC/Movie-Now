@@ -1,6 +1,6 @@
 # Movie Now
 
-# (../photos/WireFrame_HomePage.jpg)
+![](photos/photos/WireFrame_HomePage.jpg)
 Movie Poster source: Avenger
 Background photo credit: Jack Phan
 
