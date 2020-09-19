@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 
 /* Routes */
-// view route
+// Home Page
 app.get("/", (req, res) => {
     res.render("index");
 });
@@ -28,5 +28,5 @@ app.get("/", (req, res) => {
 
 /* Server Listener*/
 app.listen(PORT, function() {
-    console.log(`Server is listening to PORT: ${PORT}`);
+    console.log(`Server is listening to on http://localhost:${PORT}`);
 });
