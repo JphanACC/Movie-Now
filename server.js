@@ -21,13 +21,12 @@ app.use(methodOverride("_method"));
 /* Routes */
 // view route
 app.get("/", (req, res) => {
-    res.render("index")
-})
+    res.render("index");
+});
 
 
 
 /* Server Listener*/
 app.listen(PORT, function() {
     console.log(`Server is listening to PORT: ${PORT}`);
-
-})
+});
