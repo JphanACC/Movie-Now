@@ -19,4 +19,5 @@ mongoose.connection.on("disconnect", function(event) {
 
 module.exports = {
     Movie: require("./Movie"),
+    Theatre: require("./Theatre"),
 };
