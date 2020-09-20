@@ -24,10 +24,10 @@ app.use(methodOverride("_method"));
 /* Routes */
 // NOTE Home Page
 app.get("/", (req, res) => {
-    res.render("index", { title: 'Home Page Test' });
+    res.render("index", { title: 'Home Page Test', css: 'main' });
 });
 app.get("/template", (req, res) => {
-    res.render("partials/alltheatreList", { title: 'Theatre List' });
+    res.render("partials/alltheatreList", { title: 'Theatre List', css: 'main' });
 });
 
 
