@@ -25,9 +25,7 @@ app.get("/", (req, res) => {
 });
 
 //Admin Home
-app.get("/admin", (req, res) => {
-    res.render("admin/index");
-});
+app.use("/admin", controllers.admin);
 
 
 
