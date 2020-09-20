@@ -24,6 +24,11 @@ app.get("/", (req, res) => {
     res.render("index");
 });
 
+//Admin Home
+app.get("/admin", (req, res) => {
+    res.render("admin/index");
+});
+
 
 
 /* Server Listener*/
