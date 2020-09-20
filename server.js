@@ -24,6 +24,9 @@ app.get("/", (req, res) => {
     res.render("index");
 });
 
+//Admin Home
+app.use("/admin", controllers.admin);
+
 
 
 /* Server Listener*/
