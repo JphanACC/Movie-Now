@@ -6,6 +6,7 @@
     <title>Make a New Movie</title>
 </head>
 <body>
+    <h1>Add a new movie to the database</h1>
     <form action="/movie" method="POST">
         Name: <input type="text" name="name" required/><br>
         Director: <input type="text" name="director" required/><br>
@@ -14,7 +15,8 @@
         Year Released: <input type="text" name="yearReleased" required/><br>
         Plot Summary: <textarea type="text" name="plotSummary" required></textarea><br>
         Image: <input type="file" name="images" required/><br>
-        Showing at these theatres:<input type="checkbox" name="theatre" required/><br>
+        Showing at these theatres:<input type="checkbox" name="theatre"/><br>
+        <input type="submit" value="Create Movie"/>
     </form>
 </body>
 </html>
