@@ -1,6 +1,7 @@
 /* external modules*/
 const express = require("express");
 const methodOverride = require("method-override");
+const path = require("path");
 
 
 /* internal modules*/
@@ -13,15 +14,21 @@ const app = express();
 /* Config */
 const PORT = 3000;
 app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 
 /* middleware */
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 
 /* Routes */
-// Home Page
+// NOTE Home Page
 app.get("/", (req, res) => {
-    res.render("index");
+    res.render("index", { title: 'Home Page Test' });
+});
+
+// NOTE Test - not included in commit
+app.get("/template", (req, res) => {
+    res.render("partials/head.ejs", { title: 'Template' });
 });
 
 //Admin Home
