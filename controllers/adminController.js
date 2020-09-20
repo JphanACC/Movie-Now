@@ -5,7 +5,7 @@ const db = require("../models");
 
 //Base route admin
 router.get("/", (req, res) => {
-    res.render("admin/index");
+    res.render("admin/index", { title: "Admin Page" });
 });
 
 router.get("/newMovie", (req, res) => {

@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Home</title>
-</head>
-<body>
-    <h1>Admin Home Page</h1>
-    <a href="/admin/newMovie">Add a New Movie</a><br>
-    <a href="/admin/editMovie">Edit a Movie</a><br>
-    <a href="/admin/newTheatre">Add a New Theatre</a><br>
-    <a href="/admin/editTheatre">Edit a Theatre or Schedule</a><br>
-</body>
+<%- include ('../partials/head') %>
+    <%- include ('../partials/head-nav') %>
+
+        <body>
+            <h1>Admin Home Page</h1>
+            <a href="admin/newMovie">Add a New Movie</a><br>
+            <a href="/admin/editMovie">Edit a Movie</a><br>
+            <a href="/admin/newMovie">Add a New Theatre</a><br>
+            <a href="/admin/editMovie">Edit a Theatre or Schedule</a><br>
+        </body>
+
 </html>
