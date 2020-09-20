@@ -26,10 +26,6 @@ app.get("/", (req, res) => {
     res.render("index", { title: 'Home Page Test' });
 });
 
-// NOTE Test - not included in commit
-app.get("/template", (req, res) => {
-    res.render("partials/head.ejs", { title: 'Template' });
-});
 
 //Admin Home
 app.use("/admin", controllers.admin);
