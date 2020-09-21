@@ -4,19 +4,18 @@
 <%- include ('../partials/head') %>
 
 <body>
-    <%- include ('../partials/head-nav') %>
-            <h1>Add a new movie to the database</h1>
-            <form action="/movie" method="POST">
-                Name: <input type="text" name="name" required/>
-                <br>Director: <input type="text" name="director" required/>
-                <br>Actor: <input type="text" name="actors" required/>
-                <br>Genre: <input type="text" name="genre" required/>
-                <br>Year Released: <input type="text" name="yearReleased" required/>
-                <br>Plot Summary: <textarea type="text" name="plotSummary" required></textarea>
-                <br>Image: <input type="text" name="images" />
-                <br>Showing at these theatres:<input type="checkbox" name="theatre" />
-                <br><input type="submit" value="Create Movie" />
-            </form>
-        </body>
-
+<%- include ('../partials/head-nav') %>
+    <h1>Add a new movie to the database</h1>
+    <form action="/movie" method="POST">
+        Name: <input type="text" name="name" required/>
+        <br>Director: <input type="text" name="director" required/>
+        <br>Actor: <input type="text" name="actors" required/>
+        <br>Genre: <input type="text" name="genre" required/>
+        <br>Year Released: <input type="text" name="yearReleased" required/>
+        <br>Plot Summary: <textarea type="text" name="plotSummary" required></textarea>
+        <br>Image: <input type="text" name="images" />
+        <br>Showing at these theatres:<input type="checkbox" name="theatre" />
+        <br><input type="submit" value="Create Movie" />
+        </form>
+    </body>
 </html>
