@@ -23,7 +23,7 @@ router.put("/:id", (req, res) => {
         if (err) {
             return console.log(err);
         }
-        res.redirect(`/admin/${updatedMovie._id}`)
+        res.redirect(`/admin/`)
     })
 })
 
