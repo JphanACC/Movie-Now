@@ -3,6 +3,7 @@ const router = express.Router();
 
 const db = require("../models");
 
+//create route
 router.post("/", (req, res) => {
     db.Theatre.create(req.body, (err, createdTheatre) => {
         if (err) {
@@ -14,6 +15,7 @@ router.post("/", (req, res) => {
     });
 });
 
+//update route
 router.put("/:id", (req, res)=> {
     db.Theatre.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedTheatre) => {
         if (err) {
@@ -23,5 +25,14 @@ router.put("/:id", (req, res)=> {
     });
 });
 
+//delete route
+router.delete("/:id", (req, res) => {
+    db.Theatre.findByIdAndDelete(req.params.id, (err, deletedTheatre) => {
+        if (err) {
+            return console.log(err);
+        }
+        res.redirect("/theatre");
+    });
+});
 
 module.exports = router;
