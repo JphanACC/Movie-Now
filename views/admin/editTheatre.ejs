@@ -1,23 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Edit a theatre</title>
-    </head>
+    <%- include ("../partials/head", {title: "Edit Theatre", css: "main"}) %>
 <body>
-    <h1>Edit a theatre in the database</h1>
-    Select a theatre: 
-        <select name="theatre">
-            <% theatres.forEach(theatre => { %> 
-            <option value="<%=theatre._id %>"><%= theatre.name %></option>
-            <% }) %>
-        </select>
-    <form action="/theatre/" method="POST">
-        Name: <input type="text" name="name" required /><br>
-        Location: <input type="text" name="location" required /><br>
-        Image: <input type="text" name="image" required /><br>
-        <input type="submit" value="Make a new theatre">
-    </form>
+    edit form
 </body>
 </html>

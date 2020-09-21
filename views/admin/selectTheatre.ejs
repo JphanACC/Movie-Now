@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include ("../partials/head", {title: "Select Theatre", css: "main"}) %>
+<body>
+    <h1>Edit a theatre in the database</h1>
+    Select a theatre: <br>
+    <% theatres.forEach((theatre, index) => { %> 
+        <% console.log(theatre) %> 
+        <a href="selectTheatre/<%= theatre._id %>"><%= theatre.name %> </a><br>
+    <% }) %>
+</body>
+</html>
