@@ -14,4 +14,14 @@ router.post("/", (req, res) => {
     });
 });
 
+router.put("/:id", (req, res)=> {
+    db.Theatre.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedTheatre) => {
+        if (err) {
+            return console.log(err);
+        }
+        res.redirect(`/theatre/${updatedTheatre._id}`);
+    });
+});
+
+
 module.exports = router;
