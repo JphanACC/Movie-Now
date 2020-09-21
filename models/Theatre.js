@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const theatreSchema = new mongoose.Schema({
     name: { type: String, required: [true, "You must provide a name."] },
     location: { type: String, required: [true, "You must provide a location."] },
-    image: { type: String, required: [true, "You must provide an image."] },
+    image: { type: String },
     showings: [
         {
             type: mongoose.Schema.Types.ObjectId,

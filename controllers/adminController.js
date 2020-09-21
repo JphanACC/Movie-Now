@@ -13,20 +13,6 @@ router.get("/newMovie", (req, res) => {
     res.render("admin/newMovie", { title: "Make a New Movie", css: "main" });
 });
 
-/* Create Movie Listing */
-router.post("/", (req, res) => {
-    db.Movie.create(req.body, (err, createdMovie) => {
-        if (err) {
-            console.log(err);
-            console.log(req.body);
-            return res.send(err);
-        }
-        console.log(req.body);
-        console.log(createdMovie);
-        res.redirect("/newMovie")
-    });
-})
-
 
 // SECTION Theatre
 router.get("/newTheatre", (req, res) => {

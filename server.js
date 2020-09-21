@@ -34,6 +34,10 @@ app.get("/template", (req, res) => {
 //Admin Home
 app.use("/admin", controllers.admin);
 
+//Theatre Routes
+app.use("/theatre", controllers.theatre);
+
+app.use("/movie", controllers.movie);
 
 
 /* Server Listener*/
