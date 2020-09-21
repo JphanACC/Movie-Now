@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include ('../partials/head', { title: "Edit Movie", css: "main"}) %>
+    <%- include ('../partials/head-nav') %>
+
+        <body>
+            <h1>Edit Movie Page</h1>
+            <% let currentMovie = null %>
+                <select name="Pick Movie">
+                    <option value="--Select--" disabled>Choose the movie</option>
+                    <% movies.forEach(movie => { %>        
+                        <option selected="<%= movie._id %>">
+                            <%= movie.name %>
+                        </option>
+                        
+                    <% }) %> 
+                    
+                    </select>
+                <button><a href="/admin/<%= movie._id %>">Pick Movie</a></button>
+        </body>
+
+</html>

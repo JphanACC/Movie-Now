@@ -16,5 +16,9 @@ router.post("/", (req, res) => {
     });
 })
 
+/* Edit Movie Listing*/
+//update route
+
+
 
 module.exports = router;
