@@ -37,6 +37,8 @@ app.use("/admin", controllers.admin);
 //Theatre Routes
 app.use("/theatre", controllers.theatre);
 
+app.use("/movie", controllers.movie);
+
 
 /* Server Listener*/
 app.listen(PORT, function() {
