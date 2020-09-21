@@ -27,5 +27,13 @@ router.put("/:id", (req, res) => {
     })
 })
 
+//delete route
+router.delete("/:id", (req, res) => {
+    db.Movie.findByIdAndDelete(req.params.id, (err, deletedMovie) => {
+        if (err) return res.send(err);
+        res.redirect("/admin/")
+    })
+})
+
 
 module.exports = router;
