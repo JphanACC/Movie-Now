@@ -10,7 +10,7 @@ router.post("/", (req, res) => {
             return res.send(err);
         }
         console.log(createdTheatre);
-        res.redirect("/admin");
+        res.redirect("/theatres");
     });
 });
 
@@ -19,7 +19,7 @@ router.put("/:id", (req, res) => {
         if (err) {
             return console.log(err);
         }
-        res.redirect(`/admin/`);
+        res.redirect(`/theatres/${updatedTheatre._id}`);
     });
 });
 
