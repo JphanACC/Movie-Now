@@ -19,6 +19,16 @@ router.get("/newTheatre", (req, res) => {
     res.render("admin/newTheatre", { title: "Make a New Theatre", css: "main" });
 });
 
+router.get("/editTheatre", (req, res) => {
+    db.Theatre.find({}).populate("theatres").exec(function (err, foundTheatres) {
+        if (err) {
+            console.log(err);
+            return res.send(err);
+        }
+        const context = { theatres: foundTheatres };
+        res.render("admin/editTheatre", context);
+    });
+});
 
 
 module.exports = router;

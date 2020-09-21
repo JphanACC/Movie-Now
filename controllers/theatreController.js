@@ -14,15 +14,6 @@ router.post("/", (req, res) => {
     });
 });
 
-router.get("/editTheatre", (req, res) => {
-    db.Theatre.find({}.populate("theatres").exec(function (err, foundTheatres) {
-        if (err) {
-            console.log(err);
-            return res.send(err);
-        }
-        const context = { theatres: foundTheatres };
-        res.render("/editTheatre", context);
-    }));
-});
+
 
 module.exports = router;
