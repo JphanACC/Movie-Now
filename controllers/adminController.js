@@ -16,4 +16,9 @@ router.get("/newTheatre", (req, res) => {
     res.render("admin/newTheatre", { title: "Make a New Theatre", css: "main" });
 });
 
+router.get("/newShowing", (req, res) => {
+    res.render("admin/newShowing", { title: "Make a New Showing", css: "main" });
+});
+
+
 module.exports = router;

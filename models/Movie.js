@@ -7,7 +7,6 @@ const movieSchema = new mongoose.Schema(
         genre: { type: String, required: [true, "You must provide a genre."] },
         yearReleased: { type: String, required: [true, "You must provide a release year."] },
         plotSummary: { type: String, required: [true, "You must provide a plot summary."] },
-        plotSummary: { type: String, required: [true, "You must provide a plot summary."] },
         actors: { type: [String], required: [true, "You must provide at least one actor."]},
         images: { type: [String], required: [true, "You must provide at least one image."]},
         Theatres: [{
