@@ -16,5 +16,16 @@ router.post("/", (req, res) => {
     });
 })
 
+/* Edit Movie Listing*/
+//update route
+router.put("/:id", (req, res) => {
+    db.Movie.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedMovie) => {
+        if (err) {
+            return console.log(err);
+        }
+        res.redirect(`/admin/`)
+    })
+})
+
 
 module.exports = router;
