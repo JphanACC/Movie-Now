@@ -4,9 +4,10 @@
 <body>
     <h1>Edit a theatre in the database</h1>
     Select a theatre: <br>
-    <% theatres.forEach((theatre, index) => { %> 
-        <% console.log(theatre) %> 
-        <a href="selectTheatre/<%= theatre._id %>"><%= theatre.name %> </a><br>
-    <% }) %>
+    <select name="theatres" id="theatre" onchange=" location = this.value ">
+        <% theatres.forEach( ( theatre, idx ) => { %>
+            <option id="<%= idx %>" value="selectTheatre/<%= theatre._id %>"><%= theatre.name %></option>
+        <% }) %>
+    </select>
 </body>
 </html>
