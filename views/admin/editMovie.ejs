@@ -11,9 +11,7 @@
                 <br>Actor: <input type="text" name="actors" value="<%= movie.actors %>" required/>
                 <br>Genre: <input type="text" name="genre" value="<%= movie.genre %>" required/>
                 <br>Year Released: <input type="text" name="yearReleased" value="<%= movie.yearReleased %>" required/>
-                <br>Plot Summary: <textarea type="text" name="plotSummary" required>
-                    <%= movie.plotSummary %> 
-                </textarea>
+                <br>Plot Summary: <textarea type="text" name="plotSummary" required><%=movie.plotSummary%></textarea>
                 <br>Image: <input type="text" name="images" value="<%= movie.images %>" />
                 <br>Showing at these theatres:<input type="checkbox" name="theatre" />
                 <br><input type="submit" value="Update Movie" />
