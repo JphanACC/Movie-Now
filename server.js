@@ -39,6 +39,8 @@ app.use("/theatre", controllers.theatre);
 
 app.use("/movie", controllers.movie);
 
+app.use("/showing", controllers.showing);
+
 
 /* Server Listener*/
 app.listen(PORT, function() {

@@ -78,4 +78,31 @@ router.get("/selectTheatre/:id", (req, res) => {
     });
 });
 
+//SECTION Schedule
+
+/* Experiment */
+router.get("/addShowing", (req, res) => {
+    db.Movie.find({})
+        .populate("threatres")
+        .exec(function(err, foundMovies) {
+            if (err) {
+                return res.send(err);
+            }
+            const context = { movies: foundMovies, theatres: db.Theatre.find({}) };
+
+            res.render("admin/addShowing", context);
+        });
+});
+
+//working for movie
+// router.get("/addShowing", (req, res) => {
+//     db.Movie.find({}, (error, foundMovies) => {
+//         if (error) return res.send(error);
+//         const context = {
+//             movies: foundMovies,
+//         };
+//         res.render("admin/addShowing", context)
+//     })
+// })
+
 module.exports = router;
