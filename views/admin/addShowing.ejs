@@ -14,13 +14,8 @@
                         <option id="<%=idx%>" value="<%=movie._id %>"><%=movie.name%></option>
                     <% }) %>
                 </select>
-                <% console.log(theatres) %>
-                    <br> Theatre:
-                    <select name="theatrelist">
-                    <% theatres.forEach((theatre, idx) => { %>
-                        <option id="<%=idx%>" value="<%=theatre._id %>"><%=theatre.name%></option>
-                    <% }) %>
-                </select>
+                <% console.log(movies[1].theatres) %>
+                    </select>
                     <br> Time:
                     <br> Price:
                     <br> Playing:

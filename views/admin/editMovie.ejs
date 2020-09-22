@@ -13,7 +13,16 @@
                 <br>Year Released: <input type="text" name="yearReleased" value="<%= movie.yearReleased %>" required/>
                 <br>Plot Summary: <textarea type="text" name="plotSummary" required><%=movie.plotSummary%></textarea>
                 <br>Image: <input type="text" name="images" value="<%= movie.images %>" />
-                <br>Showing at these theatres:<input type="checkbox" name="theatre" />
+                <br>Showing at these theatres:
+                <!-- <input type="checkbox" name="theatre" /> -->
+
+                <select name="theatres" id="theatre">
+                <% theatres.forEach((theatre, idx) => { %>
+                    <option id="<%= idx %>" value="<%= theatre._id %>"><%= theatre.name %> </option>
+                <% }) %> 
+                </select>
+
+
                 <br><input type="submit" value="Update Movie" />
             </form>
             <form action="/movie/<%= movie._id %>?_method=DELETE" method="POST"><input type="submit" value="Delete this movie" /></form>

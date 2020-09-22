@@ -29,26 +29,39 @@ router.get("/newMovie", (req, res) => {
 // })
 
 router.get("/selectMovie", (req, res) => {
-    db.Movie.find({}, (error, foundMovies) => {
-        if (error) return res.send(error);
-        const context = {
-            movies: foundMovies,
-        };
-        res.render("admin/selectMovie", context)
+        db.Movie.find({}, (error, foundMovies) => {
+            if (error) return res.send(error);
+            const context = {
+                movies: foundMovies,
+            };
+            res.render("admin/selectMovie", context)
+        })
     })
-})
-router.get("/selectMovie/:id", (req, res) => {
-    db.Movie.findById(req.params.id, (err, foundMovie) => {
-        if (err) {
-            return console.log(err);
-        }
-        console.log(foundMovie);
-        res.render("admin/editMovie", {
-            movie: foundMovie
-        });
-    });
-});
+    // router.get("/selectMovie/:id", (req, res) => {
+    //     db.Movie.findById(req.params.id, (err, foundMovie) => {
+    //         if (err) {
+    //             return console.log(err);
+    //         }
+    //         const foundTheatres = db.Movie.create(req.body);
 
+//         console.log(foundTheatres);
+//         res.render("admin/editMovie", {movie: foundMovie});
+//     });
+// });
+router.get("/selectMovie/:id", (req, res) => {
+    db.Movie.findById(req.params.id).populate("theatres").exec((err, foundMovie) => {
+        if (err) return res.send(err);
+        const context = { movie: foundMovie };
+        db.Theatre.find().exec((err, foundTheatres) => {
+            if (err) return res.send(err);
+
+
+            res.render("admin/editMovie", { movie: foundMovie, theatres: foundTheatres })
+        });
+
+        //res.render("admin/editMovie", { movie: foundMovie, allTheatre: foundTheatres });
+    })
+});
 
 // SECTION Theatre
 router.get("/newTheatre", (req, res) => {
@@ -93,6 +106,23 @@ router.get("/addShowing", (req, res) => {
             res.render("admin/addShowing", context);
         });
 });
+
+// router.get("/addShowing", async(req, res) => {
+//     try {
+//         const createdTheatre = await db.Theatre.create(req.body)
+//         const foundMovie = await db.Movie.find({});
+
+//         foundMovie.theatres.push(createdTheatre);
+//         await foundMovie.save();
+
+//         res.redirect("/admin/")
+
+//     } catch (error) {
+//         console.log(error);
+//         res.send({ message: "Test: server error" })
+
+//     }
+// })
 
 //working for movie
 // router.get("/addShowing", (req, res) => {
