@@ -4,33 +4,33 @@
 
 <%- include ('partials/head') %>
 
-<body>
-    <%- include ('partials/head-nav') %>
-    <div class="home-movie-trending">
-        <div class="home-movie-navigation">
-            <nav>
-                <a href="/movies/">Show All Movies</a>
-                <br><a href="/theatres/">Show All Theatres</a>
-            </nav>
-        </div>
-        <div class="home-movie-carousel-nav">
-        </div>
-        <div class="home-trending-body">
-            <p class="home-movie-trending-text">Now Trending</p>
-            <img src="" alt="">
-            <div class="home-movie-description">
-                <p>Movie Title: Movie.name</p>
-                <p>Movie Description: Movie.description</p>
+    <body>
+        <%- include ('partials/head-nav') %>
+            <div class="home-movie-trending">
+                <div class="home-movie-navigation">
+                    <nav>
+                        <a href="/movie/">Show All Movies</a>
+                        <br><a href="/theatre/">Show All Theatres</a>
+                    </nav>
+                </div>
+                <div class="home-movie-carousel-nav">
+                </div>
+                <div class="home-trending-body">
+                    <p class="home-movie-trending-text">Now Trending</p>
+                    <img src="" alt="">
+                    <div class="home-movie-description">
+                        <p>Movie Title: Movie.name</p>
+                        <p>Movie Description: Movie.description</p>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="home-movie-nowplaying">
-            <p>Now Playing</p>
-        <div class="home-movie-playing-carousel">
-            <!-- For loop 6 times, add a random list of movies with "now-playing" tag -->
-            <img src="" alt="">
-        </div>
-    </div>
-</body>
+            <div class="home-movie-nowplaying">
+                <p>Now Playing</p>
+                <div class="home-movie-playing-carousel">
+                    <!-- For loop 6 times, add a random list of movies with "now-playing" tag -->
+                    <img src="" alt="">
+                </div>
+            </div>
+    </body>
 
 </html>

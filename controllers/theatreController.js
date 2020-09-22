@@ -36,4 +36,25 @@ router.delete("/:id", (req, res) => {
     });
 });
 
+//show All route
+router.get("/", (req, res) => {
+    db.Theatre.find({}, (err, foundTheatre) => {
+        if (err) return res.send(err);
+        const content = { theatres: foundTheatre };
+        res.render("theatre/index", { title: "All Theatres List", css: "main", theatres: foundTheatre });
+    });
+})
+
+
+// SECTION Partials - Show (Show all Theatre List)
+//show route for EJS
+// route: http://localhost:3000/theatre-partials/showAll
+router.get("/showAll", (req, res) => {
+    db.Theatre.find({}, (err, foundTheatre) => {
+        if (err) return res.send(err);
+        const content = { theatres: foundTheatre };
+
+        res.render("partials/theatreTemplate", content);
+    });
+});
 module.exports = router;
