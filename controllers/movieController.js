@@ -23,6 +23,7 @@ router.put("/:id", (req, res) => {
         if (err) {
             return console.log(err);
         }
+
         res.redirect(`/admin/`)
     })
 })
@@ -31,7 +32,8 @@ router.put("/:id", (req, res) => {
 router.delete("/:id", (req, res) => {
     db.Movie.findByIdAndDelete(req.params.id, (err, deletedMovie) => {
         if (err) return res.send(err);
-        res.redirect("/admin/")
+
+        res.redirect("/admin/");
     })
 })
 
