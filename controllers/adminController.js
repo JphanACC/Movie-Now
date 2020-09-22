@@ -12,44 +12,20 @@ router.get("/", (req, res) => {
 router.get("/newMovie", (req, res) => {
     res.render("admin/newMovie", { title: "Make a New Movie", css: "main" });
 });
-
-
-// router.get("/editMovie", async(req, res) => {
-//     try {
-//         const foundMovie = await db.Movie.find({});
-
-//         const context = {
-//             movies: foundMovie
-//         };
-//         res.render("admin/editMovie", context)
-//     } catch (error) {
-//         console.log(error);
-//         return res.send(error)
-//     }
-// })
-
+//Show Select Movie
 router.get("/selectMovie", (req, res) => {
-        db.Movie.find({}, (error, foundMovies) => {
-            if (error) return res.send(error);
-            const context = {
-                movies: foundMovies,
-            };
-            res.render("admin/selectMovie", context)
-        })
+    db.Movie.find({}, (error, foundMovies) => {
+        if (error) return res.send(error);
+        const context = {
+            movies: foundMovies,
+        };
+        res.render("admin/selectMovie", context)
     })
-    // router.get("/selectMovie/:id", (req, res) => {
-    //     db.Movie.findById(req.params.id, (err, foundMovie) => {
-    //         if (err) {
-    //             return console.log(err);
-    //         }
-    //         const foundTheatres = db.Movie.create(req.body);
+})
 
-//         console.log(foundTheatres);
-//         res.render("admin/editMovie", {movie: foundMovie});
-//     });
-// });
+//Show Select Movie by ID
 router.get("/selectMovie/:id", (req, res) => {
-    db.Movie.findById(req.params.id).populate("theatres").exec((err, foundMovie) => {
+    db.Movie.findById(req.params.id).populate("Theatres").exec((err, foundMovie) => {
         if (err) return res.send(err);
         const context = { movie: foundMovie };
         db.Theatre.find().exec((err, foundTheatres) => {
@@ -58,8 +34,6 @@ router.get("/selectMovie/:id", (req, res) => {
 
             res.render("admin/editMovie", { movie: foundMovie, theatres: foundTheatres })
         });
-
-        //res.render("admin/editMovie", { movie: foundMovie, allTheatre: foundTheatres });
     })
 });
 
@@ -94,16 +68,17 @@ router.get("/selectTheatre/:id", (req, res) => {
 //SECTION Schedule
 
 /* Experiment */
-router.get("/addShowing", (req, res) => {
+router.get("/newShowing", (req, res) => {
     db.Movie.find({})
-        .populate("threatres")
+        .populate("Threatres")
         .exec(function(err, foundMovies) {
             if (err) {
                 return res.send(err);
             }
-            const context = { movies: foundMovies, theatres: db.Theatre.find({}) };
-
-            res.render("admin/addShowing", context);
+            db.Theatre.find().exec((err, foundTheatres) => {
+                if (err) return res.send(err);
+                res.render("admin/newShowing", { movie: foundMovies, theatre: foundTheatres, title: "Add new showing", css: "main" })
+            });
         });
 });
 
