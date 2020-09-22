@@ -28,23 +28,6 @@ router.put("/:id", (req, res) => {
     })
 })
 
-// router.get("/:id", async(req, res) => {
-//     try {
-//         const createdTheatre = await db.Theatre.create(req.body)
-//         const foundMovie = await db.Movie.findById(req.body.movie);
-
-//         foundMovie.theatres.push(createdTheatre);
-//         await foundMovie.save();
-
-//         res.redirect("/admin/")
-
-//     } catch (error) {
-//         console.log(error);
-//         res.send({ message: "Test: server error" })
-
-//     }
-// })
-
 //delete route
 router.delete("/:id", (req, res) => {
     db.Movie.findByIdAndDelete(req.params.id, (err, deletedMovie) => {

@@ -82,32 +82,5 @@ router.get("/newShowing", (req, res) => {
         });
 });
 
-// router.get("/addShowing", async(req, res) => {
-//     try {
-//         const createdTheatre = await db.Theatre.create(req.body)
-//         const foundMovie = await db.Movie.find({});
-
-//         foundMovie.theatres.push(createdTheatre);
-//         await foundMovie.save();
-
-//         res.redirect("/admin/")
-
-//     } catch (error) {
-//         console.log(error);
-//         res.send({ message: "Test: server error" })
-
-//     }
-// })
-
-//working for movie
-// router.get("/addShowing", (req, res) => {
-//     db.Movie.find({}, (error, foundMovies) => {
-//         if (error) return res.send(error);
-//         const context = {
-//             movies: foundMovies,
-//         };
-//         res.render("admin/addShowing", context)
-//     })
-// })
 
 module.exports = router;
