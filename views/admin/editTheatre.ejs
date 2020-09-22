@@ -2,6 +2,7 @@
 <html lang="en">
     <%- include ("../partials/head", {title: "Edit Theatre", css: "main"}) %>
 <body>
+    <%- include ('../partials/head-nav') %>
     <h1>Edit a theatre in the database</h1>
     <form action="/theatre/<%= theatre._id %>?_method=PUT" method="POST">
         Name: <input type="text" name="name" value="<%= theatre.name  %>" required /><br>

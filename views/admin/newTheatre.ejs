@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Make an new theatre</title>
+    <%- include ('../partials/head', { title: "Create new theatre", css: "main"}) %>
 </head>
 <body>
+    <%- include ('../partials/head-nav') %>
     <h1>Add a new theatre to the database</h1>
     <form action="/theatre" method="POST">
         Name: <input type="text" name="name" required /><br>
