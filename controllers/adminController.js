@@ -70,7 +70,7 @@ router.get("/selectTheatre/:id", (req, res) => {
 /* Experiment */
 router.get("/newShowing", (req, res) => {
     db.Movie.find({})
-        .populate("Threatres")
+        .populate("Theatres")
         .exec(function(err, foundMovies) {
             if (err) {
                 return res.send(err);
