@@ -19,7 +19,7 @@
             <p class="home-movie-trending-text">Now Trending</p>
             <img src="" alt="">
             <div class="home-movie-description">
-                <p><%= movies[0].name %></p>
+                <a href="/movie/<%= movies[0]._id %>"><%= movies[0].name %></a>
                 <p><%= movies[0].plotSummary %></p>
             </div>
         </div>
@@ -29,7 +29,7 @@
         <div class="home-movie-playing-carousel">
             <% for( let index = 1; index < 7; index++ ) { %>
             <img src="<%= movies[index].images %> " alt="<%= movies[index].name %> ">
-            <p><%= movies[index].name %> </p>
+            <a href="/movie/<%= movies[index]._id %>"><%= movies[index].name %></a>
             <% } %>
         </div>
     </div>
