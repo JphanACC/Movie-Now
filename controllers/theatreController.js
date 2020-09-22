@@ -16,8 +16,8 @@ router.post("/", (req, res) => {
 });
 
 //update route
-router.put("/:id", (req, res)=> {
-    db.Theatre.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedTheatre) => {
+router.put("/:id", (req, res) => {
+    db.Theatre.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedTheatre) => {
         if (err) {
             return console.log(err);
         }
@@ -28,10 +28,11 @@ router.put("/:id", (req, res)=> {
 //delete route
 router.delete("/:id", (req, res) => {
     db.Theatre.findByIdAndDelete(req.params.id, (err, deletedTheatre) => {
-        if (err) {
-            return console.log(err);
-        }
-        res.redirect("/theatre");
+        if (err) return res.send(err);
+        db.Showing.remove({ Theatre: deletedTheatre._id }, (err, removedShowing) => {
+            if (err) return res.send(err);
+            res.redirect("/theatre");
+        })
     });
 });
 
