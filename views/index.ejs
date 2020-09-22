@@ -4,6 +4,7 @@
 
 <%- include ('partials/head') %>
 
+<<<<<<< HEAD
     <body>
         <%- include ('partials/head-nav') %>
             <div class="home-movie-trending">
@@ -32,5 +33,37 @@
                 </div>
             </div>
     </body>
+=======
+<body>
+    <%- include ('partials/head-nav') %>
+    <div class="home-movie-trending">
+        <div class="home-movie-navigation">
+            <nav>
+                <a href="/movies/">Show All Movies</a>
+                <br><a href="/theatres/">Show All Theatres</a>
+            </nav>
+        </div>
+        <div class="home-movie-carousel-nav">
+        </div>
+        <div class="home-trending-body">
+            <p class="home-movie-trending-text">Now Trending</p>
+            <img src="" alt="">
+            <div class="home-movie-description">
+                <a href="/movie/<%= movies[0]._id %>"><%= movies[0].name %></a>
+                <p><%= movies[0].plotSummary %></p>
+            </div>
+        </div>
+    </div>
+    <div class="home-movie-nowplaying">
+            <p>Now Playing</p>
+        <div class="home-movie-playing-carousel">
+            <% for( let index = 1; index < 7; index++ ) { %>
+            <img src="<%= movies[index].images %> " alt="<%= movies[index].name %> ">
+            <a href="/movie/<%= movies[index]._id %>"><%= movies[index].name %></a>
+            <% } %>
+        </div>
+    </div>
+</body>
+>>>>>>> submaster
 
 </html>

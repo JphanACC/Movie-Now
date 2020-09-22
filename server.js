@@ -26,11 +26,21 @@ app.use(methodOverride("_method"));
 /* Routes */
 // NOTE Home Page
 app.get("/", (req, res) => {
-    res.render("index", {
-        title: 'Home Page Test',
-        css: 'main'
-    });
+        db.Movie.find({}).populate("movies").exec(function(err, foundMovies) {
+        if (err) {
+            console.log(err);
+            return res.send(err);
+        }
+        shuffle(foundMovies);    
+        res.render("index", {
+            title: 'Home Page Test',
+            css: 'main',
+            movies: foundMovies,
+        });
+    })
 });
+
+
 app.get("/template", (req, res) => {
     res.render("partials/alltheatreList", {
         title: 'Theatre List',
@@ -56,3 +66,20 @@ app.use("/theatre-partials/", controllers.theatre);
 app.listen(PORT, function() {
     console.log(`Server is listening to on http://localhost:${PORT}`);
 });
+
+/**
+ * Fisher-Yates shuffle randomizes cards array
+ * @author Mike Bostock - https://bost.ocks.org/mike/shuffle/
+ */
+const shuffle = function(array) {
+    let length = array.length;
+    let element;
+    let index;
+    while (length) {
+        index = Math.floor(Math.random() * length--);
+        element = array[length];
+        array[length] = array[index];
+        array[index] = element;
+    }
+    return array;
+};

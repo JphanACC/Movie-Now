@@ -3,6 +3,20 @@ const router = express.Router();
 
 const db = require("../models");
 
+//Movie show page
+router.get("/:id", (req, res) => {
+    db.Movie.findById(req.params.id, (err, foundMovie) => {
+        if (err) {
+            console.log(err);
+            return res.send(err);
+        }
+        const context = {
+            movie: foundMovie,
+            title: foundMovie.name, 
+            css: "main"};
+        res.render("movie/show", context);
+    });
+});
 
 /* Create Movie Listing */
 router.post("/", (req, res) => {
