@@ -7,7 +7,11 @@ const movieSchema = new mongoose.Schema({
     yearReleased: { type: String, required: [true, "You must provide a release year."] },
     plotSummary: { type: String, required: [true, "You must provide a plot summary."] },
     actors: { type: String, required: [true, "You must provide at least one actor."] },
+<<<<<<< HEAD
     images: { type: String, required: [true, "You must provide at least one image."] },
+=======
+    images: { type: String, required: [true, "You must provide an one image."] },
+>>>>>>> submaster
     Theatres: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Theatre",
