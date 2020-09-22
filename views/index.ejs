@@ -27,8 +27,10 @@
     <div class="home-movie-nowplaying">
             <p>Now Playing</p>
         <div class="home-movie-playing-carousel">
-            <!-- For loop 6 times, add a random list of movies with "now-playing" tag -->
-            <img src="" alt="">
+            <% for( let index = 1; index < 7; index++ ) { %>
+            <img src="<%= movies[index].images %> " alt="<%= movies[index].name %> ">
+            <p><%= movies[index].name %> </p>
+            <% } %>
         </div>
     </div>
 </body>
