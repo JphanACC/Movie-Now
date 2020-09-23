@@ -38,7 +38,7 @@ router.put("/:id", (req, res) => {
             return console.log(err);
         }
 
-        res.redirect(`/admin/`)
+        res.redirect("/admin/");
     })
 })
 
