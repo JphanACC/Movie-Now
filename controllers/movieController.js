@@ -4,12 +4,53 @@ const router = express.Router();
 const db = require("../models");
 
 //Movie show page
+// router.get("/:id", async (req, res) => {
+//     const context = {};
+//     try {
+//         const movieId = req.params.id;
+//         const theatreList = [];
+//         const theatreObjects = [];
+//         db.Movie.findById(movieId, async (foundMovie) => {
+//             db.Showing.find({Movie: movieId, playing: true}, function(showing) {
+//                 showing.forEach(showing => {
+//                     console.log(showing);
+//                     theatreList.push(showing.Theatre);
+//                 });
+//             });
+//             console.log(theatreList);
+//             const addContext = function(foundMovie) {
+//                 context = {
+//                     movie: foundMovie,
+//                     title: foundMovie.name, 
+//                     css: "main"
+//                 };
+//             };
+//             await addContext(foundMovie);
+//         });
+//         await res.render("movie/show", context);
+//     } catch (error) {
+//         res.send({message: "Internal server error"});
+//     }
+// });
+
 router.get("/:id", (req, res) => {
-    db.Movie.findById(req.params.id, (err, foundMovie) => {
+    const movieId = req.params.id;
+    const theatreList = [];
+    db.Movie.findById(movieId, (err, foundMovie) => {
         if (err) {
             console.log(err);
             return res.send(err);
         }
+        db.Showing.find({Movie: movieId, playing: true}, function(err, showing) {
+            if (err) {
+                console.log(err);
+                return res.send(err);
+            }
+            showing.forEach(showing => {
+                theatreList.push(showing.Theatre);
+            });
+            console.log(theatreList);
+        });
         const context = {
             movie: foundMovie,
             title: foundMovie.name, 
