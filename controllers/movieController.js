@@ -6,7 +6,6 @@ const db = require("../models");
 //show route
 router.get("/:id", (req, res) => {
     const movieId = req.params.id;
-    const theatreList = [];
     db.Movie.findById(movieId, (err, foundMovie) => {
         if (err) {
             console.log(err);
