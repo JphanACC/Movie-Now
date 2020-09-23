@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include ('../partials/head') %>
+
+    <body>
+        <%- include ('../partials/head-nav') %>
+            <h1>Add new showings</h1>
+            <form action="/showing" method="POST">
+                <br>Price: <input type="number" name="price" /><br> Showings:
+                <br><input type="checkbox" name="playing[1:00PM]" default="off"> 1:00PM
+                <select name="playing[1:00PM]"> 
+                    <% movie.forEach( ( movie, idx ) => { %>
+                        <option id="<%= idx %>" value="<%= movie._id %>"><%= movie.name %></option>
+                    <% }) %></select>
+                <br><input type="checkbox" name="playing[3:00PM]"> 3:00PM
+                <select name="playing[3:00PM]"> 
+                        <% movie.forEach( ( movie, idx ) => { %>
+                            <option id="<%= idx %>" value="<%= movie._id %>"><%= movie.name %></option>
+                        <% }) %></select>
+                <br><input type="checkbox" name="playing[5:00PM]"> 5:00PM
+                <select name="playing[5:00PM]"> 
+                        <% movie.forEach( ( movie, idx ) => { %>
+                            <option id="<%= idx %>" value="<%= movie._id %>"><%= movie.name %></option>
+                        <% }) %></select>
+                <br><input type="checkbox" name="playing[7:00PM]"> 7:00PM
+                <select name="playing[7:00PM]"> 
+                        <% movie.forEach( ( movie, idx ) => { %>
+                            <option id="<%= idx %>" value="<%= movie._id %>"><%= movie.name %></option>
+                        <% }) %></select>
+                <br><input type="checkbox" name="playing[9:00PM]"> 9:00PM
+                <select name="playing[9:00PM]"> 
+                        <% movie.forEach( ( movie, idx ) => { %>
+                            <option id="<%= idx %>" value="<%= movie._id %>"><%= movie.name %></option>
+                        <% }) %></select>
+                <br><input type="submit" value="Create new showing(s)">
+            </form>
+    </body>
+
+</html>
