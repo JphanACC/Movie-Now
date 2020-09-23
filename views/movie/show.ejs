@@ -7,7 +7,7 @@
     <%- include ('../partials/head-nav') %>
     <h1><%= movie.name %></h1> 
     <div class="all-theatres-list-div">
-        <p>All Theatres</p>
+        <p>Now playing at these theatres:</p>
         <% theatres.forEach((theatre, index) => { %>
             <%- include ('../partials/alltheatreList', {oneTheatre: theatre}) %>
                 <% }) %>

@@ -7,32 +7,29 @@ const db = require("../models");
 router.get("/:id", (req, res) => {
     const movieId = req.params.id;
     const theatreList = [];
-    const theatreObjects = [];
-    let context = {
-        theatres: []
-    };
     db.Movie.findById(movieId, (err, foundMovie) => {
         if (err) {
             console.log(err);
             return res.send(err);
         }
-        db.Showing.find({Movie: movieId, playing: true}).populate("Theatre").exec(function(err, showing) {
+        db.Showing.find({Movie: movieId, playing: true}).distinct("Theatre").exec(function(err, theatreId) {
             if (err) {
                 console.log(err);
                 return res.send(err);
             }
-            //console.log(showing);
-            showing.forEach(showtime => {
-                theatreList.push(showtime.Theatre);
+            db.Theatre.find({_id:{$in:theatreId}}, function(err, allTheatres) {
+                if (err) {
+                    console.log(err);
+                    return res.send(err);
+                }
+                const context = {
+                    movie: foundMovie,
+                    title: foundMovie.name,
+                    css: "main",
+                    theatres: allTheatres,
+                };
+                res.render("movie/show", context);
             });
-            console.log(theatreList);
-            context = {
-                movie: foundMovie,
-                title: foundMovie.name,
-                css: "main",
-                theatres: theatreList,
-            };
-            res.render("movie/show", context);
         });
     });
 });
