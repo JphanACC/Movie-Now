@@ -66,6 +66,7 @@ router.get("/selectTheatreToEditShowing", (req, res) => {
 
 router.get("/editShowing/:id", (req, res) => {
     const theatreId = req.params.id;
+    let movieList = [];
     db.Theatre.findById(theatreId, (err, foundTheatre) => {
         if (err) {
             console.log(err);
@@ -77,12 +78,16 @@ router.get("/editShowing/:id", (req, res) => {
                 return res.send(err);
             }
             //console.log(foundTheatre);
-            console.log(foundShowings.Movie);
+            //console.log(foundShowings);
+            foundShowings.forEach(showing => {
+                movieList.push(showing.Movie);
+            });
+            console.log(movieList);
             const context = {
                 title: `Edit showings for ${foundTheatre.name}`,
                 css: "main",
                 showings: foundShowings,
-                movie: foundShowings.Movie,
+                movie: movieList,
             };
             res.render("admin/editShowing", context);
         })
