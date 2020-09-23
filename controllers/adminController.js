@@ -53,6 +53,17 @@ router.get("/selectTheatre", (req, res) => {
     });
 });
 
+router.get("/selectTheatreToEditShowing", (req, res) => {
+    db.Theatre.find({}).populate("theatres").exec(function(err, foundTheatres) {
+        if (err) {
+            console.log(err);
+            return res.send(err);
+        }
+        const context = { theatres: foundTheatres };
+        res.render("admin/selectTheatreToEditShowing", context);
+    });
+});
+
 router.get("/selectTheatre/:id", (req, res) => {
     db.Theatre.findById(req.params.id, (err, foundTheatre) => {
         if (err) {
