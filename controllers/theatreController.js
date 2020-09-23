@@ -54,7 +54,7 @@ router.get("/showAll", (req, res) => {
         if (err) return res.send(err);
         const content = { theatres: foundTheatre };
 
-        res.render("partials/theatreTemplate", content);
+        res.render("partials/alltheatreList", content);
     });
 });
 module.exports = router;

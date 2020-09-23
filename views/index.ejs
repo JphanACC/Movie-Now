@@ -4,14 +4,13 @@
 
 <%- include ('partials/head') %>
 
-<<<<<<< HEAD
     <body>
         <%- include ('partials/head-nav') %>
             <div class="home-movie-trending">
                 <div class="home-movie-navigation">
                     <nav>
-                        <a href="/movie/">Show All Movies</a>
-                        <br><a href="/theatre/">Show All Theatres</a>
+                        <a href="/movies/">Show All Movies</a>
+                        <br><a href="/theatres/">Show All Theatres</a>
                     </nav>
                 </div>
                 <div class="home-movie-carousel-nav">
@@ -20,50 +19,26 @@
                     <p class="home-movie-trending-text">Now Trending</p>
                     <img src="" alt="">
                     <div class="home-movie-description">
-                        <p>Movie Title: Movie.name</p>
-                        <p>Movie Description: Movie.description</p>
+                        <a href="/movie/<%= movies[0]._id %>">
+                            <%= movies[0].name %>
+                        </a>
+                        <p>
+                            <%= movies[0].plotSummary %>
+                        </p>
                     </div>
                 </div>
             </div>
             <div class="home-movie-nowplaying">
                 <p>Now Playing</p>
                 <div class="home-movie-playing-carousel">
-                    <!-- For loop 6 times, add a random list of movies with "now-playing" tag -->
-                    <img src="" alt="">
+                    <% for( let index = 1; index < 7; index++ ) { %>
+                        <img src="<%= movies[index].images %> " alt="<%= movies[index].name %> ">
+                        <a href="/movie/<%= movies[index]._id %>">
+                            <%= movies[index].name %>
+                        </a>
+                        <% } %>
                 </div>
             </div>
     </body>
-=======
-<body>
-    <%- include ('partials/head-nav') %>
-    <div class="home-movie-trending">
-        <div class="home-movie-navigation">
-            <nav>
-                <a href="/movies/">Show All Movies</a>
-                <br><a href="/theatres/">Show All Theatres</a>
-            </nav>
-        </div>
-        <div class="home-movie-carousel-nav">
-        </div>
-        <div class="home-trending-body">
-            <p class="home-movie-trending-text">Now Trending</p>
-            <img src="" alt="">
-            <div class="home-movie-description">
-                <a href="/movie/<%= movies[0]._id %>"><%= movies[0].name %></a>
-                <p><%= movies[0].plotSummary %></p>
-            </div>
-        </div>
-    </div>
-    <div class="home-movie-nowplaying">
-            <p>Now Playing</p>
-        <div class="home-movie-playing-carousel">
-            <% for( let index = 1; index < 7; index++ ) { %>
-            <img src="<%= movies[index].images %> " alt="<%= movies[index].name %> ">
-            <a href="/movie/<%= movies[index]._id %>"><%= movies[index].name %></a>
-            <% } %>
-        </div>
-    </div>
-</body>
->>>>>>> submaster
 
 </html>
