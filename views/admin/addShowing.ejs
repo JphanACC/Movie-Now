@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include ('../partials/head', { title: "Add Showing", css: "main"}) %>
+    <%- include ('../partials/head-nav') %>
+
+        <body>
+            <h1>Adding Showings</h1>
+            <form action="">
+
+                </select>
+                <br> Movie:
+                <select name="movielist">
+                    <% movies.forEach((movie, idx) => { %>
+                        <option id="<%=idx%>" value="<%=movie._id %>"><%=movie.name%></option>
+                    <% }) %>
+                </select>
+                <% console.log(movies[1].theatres) %>
+                    </select>
+                    <br> Time:
+                    <br> Price:
+                    <br> Playing:
+                    <input type="submit" value="Make Schedule">
+            </form>
+
+
+        </body>
+
+</html>

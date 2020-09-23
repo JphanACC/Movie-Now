@@ -1,0 +1,29 @@
+{
+    "name": "movie-now",
+    "version": "1.0.0",
+    "description": "A movie app that allows user to browse movies and theatre locations",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/JphanACC/Movie-Now.git"
+    },
+    "author": "Jack Phan jphanacc@gmail.com && Jeffrey Thompson jeffathomp@gmail.com",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/JphanACC/Movie-Now/issues"
+    },
+    "homepage": "https://github.com/JphanACC/Movie-Now#readme",
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "ejs": "^3.1.5",
+        "express": "^4.17.1",
+        "express-ejs-layouts": "^2.5.0",
+        "express-session": "^1.17.1",
+        "method-override": "^3.0.0",
+        "mongoose": "^5.10.6"
+    }
+}

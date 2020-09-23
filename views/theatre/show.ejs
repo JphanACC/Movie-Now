@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include ('../partials/head') %>
+
+    <body>
+        <%- include ('../partials/head-nav') %>
+            <div>
+                <p>Theatre description</p>
+                <%- include ('../partials/alltheatreList', {oneTheatre: theatre}) %>
+            </div>
+
+            <div>
+                <p>Movies show at this theatre</p>
+                <ul>
+                    <% for( let index = 0; index < movies.length; index++ ) { %>
+                        <% console.log(showing)%>
+                            <a href="ticket/<%= movies[index].showingID %>">
+                                <li>
+                                    Movie name:
+                                    <%= movies[index].name %>
+                                        <br>Price: $
+                                        <%= movies[index].price %>
+                                            <br>Show Time:
+                                            <%= movies[index].time %>
+                                </li>
+                            </a>
+                            <% } %>
+                </ul>
+            </div>
+    </body>
+
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include ("../partials/head", {title: "Select Movie", css: "main"}) %>
+
+    <body>
+        <%- include ('../partials/head-nav') %>
+            <h1>Edit a movie in the database</h1>
+            Select a movie:
+            <br><select name="movies" id="movie" onchange=" location = this.value ">
+        <option value="default">Select Movie</option>
+        <% movies.forEach( ( movie, idx ) => { %>
+            <option id="<%= idx %>" value="selectMovie/<%= movie._id %>"><%= movie.name %></option>
+        <% }) %>
+    </select>
+    </body>
+
+</html>

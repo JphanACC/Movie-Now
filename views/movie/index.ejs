@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include ('../partials/head') %>
+
+    <body>
+        <%- include ('../partials/head-nav') %>
+            <h1>All Movies List</h1>
+            <% movies.forEach((movie, idx) => { %>
+                <div><a href="movie/<%= movie._id %>">
+                    <img src="<%= movie.images %>" alt="">
+                    <p>
+                        Movie:
+                        <%= movie.name %>
+                            <br>Plot Summary:
+                            <%= movie.plotSummary%>
+                    
+                    </p></a>
+                </div>
+                <% }) %>
+    </body>
+
+</html>

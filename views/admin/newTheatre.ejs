@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include ('../partials/head', { title: "Create new theatre", css: "main"}) %>
+</head>
+<body>
+    <%- include ('../partials/head-nav') %>
+    <h1>Add a new theatre to the database</h1>
+    <form action="/theatre" method="POST">
+        Name: <input type="text" name="name" required /><br>
+        Location: <input type="text" name="location" required /><br>
+        Image: <input type="text" name="image" required /><br>
+        <input type="submit" value="Make a new theatre">
+    </form>
+</body>
+</html>
