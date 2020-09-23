@@ -58,40 +58,20 @@ router.get("/", (req, res) => {
     });
 })
 
-//show route (individual theatre)
-// router.get("/:id", (req, res) => {
-//     db.Theatre.findById(req.params.id, (err, foundTheatre) => {
-//         if (err) return res.send(err);
-//         db.Showing.findById({Theatre: theatre._id}, (err, foundShowing) => {
-//             if (err) return res.send(err);
-
-//             res.render("theatre/show", {
-//                 title: "All Theatres List",
-//                 css: "main",
-//                 theatre: foundTheatre,
-//                 showing: foundShowing,
-//             });
-//         })
-
-//     })
-// })
+//show individual Theatre route
 router.get("/:id", (req, res) => {
     let moviesList = [];
     db.Theatre.findById(req.params.id).exec(function(err, foundTheatre) {
         if (err) return res.send(err);
-        console.log(`Debug 1`);
-
         db.Showing.find({ Theatre: foundTheatre._id, playing: true }).populate("Movie").exec((err, foundShowing) => {
             if (err) return res.send(err);
-
-            console.log("debug Showing Time:");
-
             foundShowing.forEach((showing, idx) => {
                 moviesList.push(showing.Movie);
                 moviesList[idx].time = showing.time;
                 moviesList[idx].price = showing.price;
+                moviesList[idx].showingID = showing._id;
             });
-
+            console.log(moviesList);
 
             res.render("theatre/show", {
                 title: "All Theatres List",
@@ -100,11 +80,28 @@ router.get("/:id", (req, res) => {
                 showing: foundShowing,
                 movies: moviesList,
             });
-
         })
     })
-
 })
+
+//Ticket Confirmation Route
+router.get("/ticket/:id", (req, res) => {
+    db.Showing.findById(req.params.id).populate("Theatre Movie").exec(function(err, foundShowing) {
+        if (err) return res.send(err);
+        console.log(foundShowing)
+        const { Theatre, Movie } = foundShowing;
+
+        res.render("movie/ticket", {
+            title: "Ticket Order Confirmation",
+            css: "main",
+            showing: foundShowing,
+            theatre: Theatre,
+            movie: Movie,
+        })
+
+    })
+})
+
 
 // SECTION Partials - Show (Show all Theatre List)
 //show route for EJS

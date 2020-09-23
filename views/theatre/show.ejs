@@ -11,19 +11,21 @@
 
             <div>
                 <p>Movies show at this theatre</p>
-                <% console.log(movies[0]) %>
-                    <ul>
-                        <% for( let index = 0; index < movies.length; index++ ) { %>
+                <ul>
+                    <% for( let index = 0; index < movies.length; index++ ) { %>
+                        <% console.log(showing)%>
                             <li>
                                 Movie name:
-                                <%= movies[index].name %>
-                                    <br>Price: $
-                                    <%= movies[index].price %>
-                                        <br>Show Time:
-                                        <%= movies[index].time %>
+                                <a href="ticket/<%= movies[index].showingID %>">
+                                    <%= movies[index].name %>
+                                </a>
+                                <br>Price: $
+                                <%= movies[index].price %>
+                                    <br>Show Time:
+                                    <%= movies[index].time %>
                             </li>
                             <% } %>
-                    </ul>
+                </ul>
             </div>
     </body>
 
