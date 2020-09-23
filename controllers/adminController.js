@@ -53,6 +53,55 @@ router.get("/selectTheatre", (req, res) => {
     });
 });
 
+router.get("/selectTheatreToEditShowing", (req, res) => {
+    db.Theatre.find({}).populate("theatres").exec(function(err, foundTheatres) {
+        if (err) {
+            console.log(err);
+            return res.send(err);
+        }
+        const context = { theatres: foundTheatres };
+        res.render("admin/selectTheatreToEditShowing", context);
+    });
+});
+
+router.get("/editShowing/:id", (req, res) => {
+    const theatreId = req.params.id;
+    let movieList = [];
+    let allMovies = [];
+    db.Theatre.findById(theatreId, (err, foundTheatre) => {
+        if (err) {
+            console.log(err);
+            return res.send(err);
+        }
+        db.Showing.find({Theatre: theatreId}).populate("Movie").exec((err, foundShowings) => {
+            if (err) {
+                console.log(err);
+                return res.send(err);
+            }
+            //console.log(foundTheatre);
+            //console.log(foundShowings);
+            foundShowings.forEach(showing => {
+                movieList.push(showing.Movie);
+            });
+            db.Movie.find({}, (err, foundMovies) => {
+                if (err) {
+                    console.log(err);
+                    return res.send(err);
+                }
+                const context = {
+                    title: `Edit showings for ${foundTheatre.name}`,
+                    css: "main",
+                    showings: foundShowings,
+                    movie: movieList,
+                    movies: foundMovies,
+                };
+                console.log(movieList);
+                res.render("admin/editShowing", context);
+            })
+        })
+    })
+})
+
 router.get("/selectTheatre/:id", (req, res) => {
     db.Theatre.findById(req.params.id, (err, foundTheatre) => {
         if (err) {

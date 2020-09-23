@@ -5,7 +5,17 @@
 </head>
 <body>
     <%- include ('../partials/head-nav') %>
-    <h1><%= movie.name %></h1> 
+    <section id="movie-detail">
+        <h1><%= movie.name %></h1> 
+        <img src="<%= movie.images %> " alt="<%= movie.name %> poster">
+        <aside>
+            <p><%=movie.director%></p>
+            <p><%=movie.actors%></p>
+            <p><%=movie.genre%></p>
+            <p><%=movie.yearReleased%></p>
+            <p><%=movie.plotSummary%></p>
+        </aside>
+    </section>
     <div class="all-theatres-list-div">
         <p>Now playing at these theatres:</p>
         <% theatres.forEach((theatre, index) => { %>
