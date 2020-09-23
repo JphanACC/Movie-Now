@@ -85,10 +85,13 @@ router.get("/:id", (req, res) => {
             if (err) return res.send(err);
 
             console.log("debug Showing Time:");
-            console.log(foundShowing.time);
-            foundShowing.forEach(showing => {
+
+            foundShowing.forEach((showing, idx) => {
                 moviesList.push(showing.Movie);
+                moviesList[idx].time = showing.time;
+                moviesList[idx].price = showing.price;
             });
+
 
             res.render("theatre/show", {
                 title: "All Theatres List",

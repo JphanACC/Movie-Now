@@ -11,16 +11,19 @@
 
             <div>
                 <p>Movies show at this theatre</p>
-                <ul>
-                    <% for( let index = 0; index < movies.length; index++ ) { %>
-                        <li>
-                            Movie name:
-                            <%= movies[index].name %>
-                                <br>Price:
-                                <br>Show Time:
-                        </li>
-                        <% } %>
-                </ul>
+                <% console.log(movies[0]) %>
+                    <ul>
+                        <% for( let index = 0; index < movies.length; index++ ) { %>
+                            <li>
+                                Movie name:
+                                <%= movies[index].name %>
+                                    <br>Price: $
+                                    <%= movies[index].price %>
+                                        <br>Show Time:
+                                        <%= movies[index].time %>
+                            </li>
+                            <% } %>
+                    </ul>
             </div>
     </body>
 
