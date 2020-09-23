@@ -11,12 +11,12 @@ router.get("/:id", (req, res) => {
             console.log(err);
             return res.send(err);
         }
-        db.Showing.find({Movie: movieId, playing: true}).distinct("Theatre").exec(function(err, theatreId) {
+        db.Showing.find({ Movie: movieId, playing: true }).distinct("Theatre").exec(function(err, theatreId) {
             if (err) {
                 console.log(err);
                 return res.send(err);
             }
-            db.Theatre.find({_id:{$in:theatreId}}, function(err, allTheatres) {
+            db.Theatre.find({ _id: { $in: theatreId } }, function(err, allTheatres) {
                 if (err) {
                     console.log(err);
                     return res.send(err);
@@ -64,6 +64,18 @@ router.delete("/:id", (req, res) => {
         db.Showing.remove({ Movie: deletedMovie._id }, (err, removedShowing) => {
             if (err) return res.send(err);
             res.redirect("/admin/");
+        })
+    })
+})
+
+//show All route
+router.get("/", (req, res) => {
+    db.Movie.find({}).exec((err, foundMovies) => {
+        if (err) return res.send(err);
+        res.render("movie/index", {
+            title: "Show All Moves",
+            css: "main",
+            movies: foundMovies
         })
     })
 })

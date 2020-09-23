@@ -14,16 +14,16 @@
                 <ul>
                     <% for( let index = 0; index < movies.length; index++ ) { %>
                         <% console.log(showing)%>
-                            <li>
-                                Movie name:
-                                <a href="ticket/<%= movies[index].showingID %>">
+                            <a href="ticket/<%= movies[index].showingID %>">
+                                <li>
+                                    Movie name:
                                     <%= movies[index].name %>
-                                </a>
-                                <br>Price: $
-                                <%= movies[index].price %>
-                                    <br>Show Time:
-                                    <%= movies[index].time %>
-                            </li>
+                                        <br>Price: $
+                                        <%= movies[index].price %>
+                                            <br>Show Time:
+                                            <%= movies[index].time %>
+                                </li>
+                            </a>
                             <% } %>
                 </ul>
             </div>
