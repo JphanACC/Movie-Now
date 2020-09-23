@@ -3,18 +3,34 @@ const router = express.Router();
 
 const db = require("../models");
 
-//Movie show page
+//show route
 router.get("/:id", (req, res) => {
-    db.Movie.findById(req.params.id, (err, foundMovie) => {
+    const movieId = req.params.id;
+    const theatreList = [];
+    db.Movie.findById(movieId, (err, foundMovie) => {
         if (err) {
             console.log(err);
             return res.send(err);
         }
-        const context = {
-            movie: foundMovie,
-            title: foundMovie.name, 
-            css: "main"};
-        res.render("movie/show", context);
+        db.Showing.find({Movie: movieId, playing: true}).distinct("Theatre").exec(function(err, theatreId) {
+            if (err) {
+                console.log(err);
+                return res.send(err);
+            }
+            db.Theatre.find({_id:{$in:theatreId}}, function(err, allTheatres) {
+                if (err) {
+                    console.log(err);
+                    return res.send(err);
+                }
+                const context = {
+                    movie: foundMovie,
+                    title: foundMovie.name,
+                    css: "main",
+                    theatres: allTheatres,
+                };
+                res.render("movie/show", context);
+            });
+        });
     });
 });
 
@@ -38,7 +54,7 @@ router.put("/:id", (req, res) => {
             return console.log(err);
         }
 
-        res.redirect(`/admin/`)
+        res.redirect("/admin/");
     })
 })
 
