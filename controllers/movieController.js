@@ -3,78 +3,7 @@ const router = express.Router();
 
 const db = require("../models");
 
-//Movie show page
-// router.get("/:id", async (req, res) => {
-//     const context = {};
-//     try {
-//         const movieId = req.params.id;
-//         const theatreList = [];
-//         const theatreObjects = [];
-//         db.Movie.findById(movieId, async (foundMovie) => {
-//             db.Showing.find({Movie: movieId, playing: true}, function(showing) {
-//                 showing.forEach(showing => {
-//                     console.log(showing);
-//                     theatreList.push(showing.Theatre);
-//                 });
-//             });
-//             console.log(theatreList);
-//             const addContext = function(foundMovie) {
-//                 context = {
-//                     movie: foundMovie,
-//                     title: foundMovie.name, 
-//                     css: "main"
-//                 };
-//             };
-//             await addContext(foundMovie);
-//         });
-//         await res.render("movie/show", context);
-//     } catch (error) {
-//         res.send({message: "Internal server error"});
-//     }
-// });
-
-// router.get("/:id", (req, res) => {
-//     const movieId = req.params.id;
-//     const theatreList = [];
-//     const theatreObjects = [];
-//     let context = {
-//         theatres: []
-//     };
-//     db.Movie.findById(movieId, (err, foundMovie) => {
-//         if (err) {
-//             console.log(err);
-//             return res.send(err);
-//         }
-//         db.Showing.find({Movie: movieId, playing: true}, function(err, showing) {
-//             if (err) {
-//                 console.log(err);
-//                 return res.send(err);
-//             }
-//             showing.forEach(showing => {
-//                 theatreList.push(showing.Theatre);
-//             });
-//             //console.log(theatreList);
-//             theatreList.forEach(theatre => {
-//                 db.Theatre.findById(theatre, (err, foundTheatre) => {
-//                     if (err) {
-//                         return res.send(err);
-//                     }
-//                     theatreObjects.push(foundTheatre);
-//                     //await foundTheatre.save();
-//                     //console.log(theatreObjects);
-//                 });
-
-//             });
-//             context = {
-//                 movie: foundMovie,
-//                 title: foundMovie.name,
-//                 css: "main"
-//             };
-//             res.render("movie/show", context);
-//         });
-//     });
-// });
-
+//show route
 router.get("/:id", (req, res) => {
     const movieId = req.params.id;
     const theatreList = [];
