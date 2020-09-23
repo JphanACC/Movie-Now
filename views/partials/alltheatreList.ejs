@@ -1,7 +1,9 @@
 <div>
     <img src="" alt="">
     <p>Theatre Name:
-        <%= oneTheatre.name%>
+        <a href="/theatre/<%= oneTheatre._id%>">
+            <%= oneTheatre.name%>
+        </a>
     </p>
     <p>Theatre Location:
         <%= oneTheatre.location%>
