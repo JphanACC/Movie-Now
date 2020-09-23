@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include ('../partials/head') %>
+
+    <body>
+        <%- include ('../partials/head-nav') %>
+            <div>
+                <p>Theatre description</p>
+                <%- include ('../partials/alltheatreList', {oneTheatre: theatre}) %>
+            </div>
+
+            <div>
+                <p>Movies show at this theatre</p>
+                <ul>
+                    <% for( let index = 0; index < movies.length; index++ ) { %>
+                        <li>
+                            Movie name:
+                            <%= movies[index].name %>
+                                <br>Price:
+                                <br>Show Time:
+                        </li>
+                        <% } %>
+                </ul>
+            </div>
+    </body>
+
+</html>
