@@ -29,14 +29,14 @@ router.post("/", (req, res) => {
 router.put("/", (req,res) => {
     console.log(req.body);
     for (const key in req.body) {
-        console.log(req.body[key]);
+        console.log(key);
         if (req.body[key][0] === 'on') {
             const editShowing = {
                 price: req.body[key][2],
                 Movie: req.body[key][1],
                 playing: true,
             }
-            db.Showing.findByIdAndUpdate(req.body[key], editShowing, {new: true}, (err, updatedShowing) => {
+            db.Showing.findByIdAndUpdate(key, editShowing, {new: true}, (err, updatedShowing) => {
                 if (err) {
                     console.log(err);
                     res.send(err);
@@ -47,7 +47,7 @@ router.put("/", (req,res) => {
             const editShowing = {
                 playing: false,
             }
-            db.Showing.findByIdAndUpdate(req.body[key], editShowing, {new: true}, (err, updatedShowing) => {
+            db.Showing.findByIdAndUpdate(key, editShowing, {new: true}, (err, updatedShowing) => {
                 if (err) {
                     console.log(err);
                     res.send(err);
