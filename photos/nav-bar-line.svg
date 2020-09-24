@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="7" height="49" viewBox="0 0 7 49">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #0979cf;
+        stroke-linecap: round;
+        stroke-width: 7px;
+      }
+    </style>
+  </defs>
+  <line id="nav-bar-line" class="cls-1" y2="42" transform="translate(3.5 3.5)"/>
+</svg>

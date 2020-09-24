@@ -4,19 +4,29 @@
 
     <body>
         <%- include ('../partials/head-nav') %>
-            <h1>All Movies List</h1>
-            <% movies.forEach((movie, idx) => { %>
-                <div><a href="movie/<%= movie._id %>">
-                    <img src="<%= movie.images %>" alt="">
-                    <p>
-                        Movie:
-                        <%= movie.name %>
-                            <br>Plot Summary:
-                            <%= movie.plotSummary%>
-                    
-                    </p></a>
+            <div class="container">
+                <h1>All Movies List</h1>
+                <div class="row my-col">
+
+                    <% movies.forEach((movie, idx) => { %>
+                        <div class="col-md-3">
+                            <div class="media">
+
+                                <a href="movie/<%= movie._id %>">
+                            <img class="align-self-start mr-3" style="width: 180px;" src="<%= movie.images %>" alt="movie-poster">
+                            <h5 class="mt-0" style="color: #fff9d4">
+                                <strong>Movie:</strong> <%= movie.name %> 
+                            </h5>
+                            <p>
+                                <strong>Plot Summary:</strong> <%= movie.plotSummary%>
+                            </p>
+                            </a>
+
+                            </div>
+                        </div>
+                        <% }) %>
                 </div>
-                <% }) %>
+            </div>
     </body>
 
 </html>
