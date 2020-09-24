@@ -4,3 +4,7 @@ body {
     font-family: 'Comfortaa', cursive;
     font-size: 18px;
 }
+
+#navigation-link {
+    left: 25px;
+}
