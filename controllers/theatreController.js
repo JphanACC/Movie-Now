@@ -74,15 +74,31 @@ router.get("/:id", (req, res) => {
             console.log(moviesList);
 
             res.render("theatre/show", {
-                title: "All Theatres List",
+                title: foundTheatre.name,
                 css: "main",
                 theatre: foundTheatre,
                 showing: foundShowing,
                 movies: moviesList,
             });
-        })
-    })
-})
+        });
+    });
+});
+
+//showings by movie route
+router.get("/showings/:id", (req, res) => {
+    db.Showing.find({Movie: req.params.id, playing: true}).populate("Movie Theatre").exec(function(err, foundShowings) {
+        if (err) {
+            console.log(err);
+            return res.send(err);
+        }
+        const context = {
+            title: `All showings for ${foundShowings[0].Movie.name}`,
+            css: "main",
+            showings: foundShowings,
+        };
+        res.render("theatre/filteredShowings", context);
+    });
+});
 
 //Ticket Confirmation Route
 router.get("/ticket/:id", (req, res) => {
