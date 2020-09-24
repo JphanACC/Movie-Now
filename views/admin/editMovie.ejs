@@ -4,10 +4,9 @@
 
     <body>
         <%- include ('../partials/head-nav') %>
-            <div class="container">
+            <div class="container fullscreen">
                 <div class="row">
-                    <div class="col-sm-6">
-
+                    <div class="col-lg-8 background-t">
                         <h1>Edit a movie in the database</h1>
                         <form action="/movie/<%= movie._id %>?_method=PUT" method="POST">
                             Name: <input type="text" name="name" value="<%= movie.name %>" required/>

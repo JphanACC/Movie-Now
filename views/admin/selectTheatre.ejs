@@ -4,14 +4,21 @@
 
     <body>
         <%- include ('../partials/head-nav') %>
-            <h1>Edit a theatre in the database</h1>
-            Select a theatre: <br>
-            <select name="theatres" id="theatre" onchange=" location = this.value ">
-        <option value="default">Select the Theatre here</option>
-        <% theatres.forEach( ( theatre, idx ) => { %>
-            <option id="<%= idx %>" value="selectTheatre/<%= theatre._id %>"><%= theatre.name %></option>
-        <% }) %>
-    </select>
+            <div class="container fullscreen">
+                <div class="row">
+                    <div class="col-lg-8 background-t">
+
+                        <h1>Edit a theatre in the database</h1>
+                        Select a theatre: <br>
+                        <select name="theatres" id="theatre" onchange=" location = this.value ">
+                <option value="default">Select the Theatre here</option>
+                <% theatres.forEach( ( theatre, idx ) => { %>
+                    <option id="<%= idx %>" value="selectTheatre/<%= theatre._id %>"><%= theatre.name %></option>
+                <% }) %>
+            </select>
+                    </div>
+                </div>
+            </div>
     </body>
 
 </html>
