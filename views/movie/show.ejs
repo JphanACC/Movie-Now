@@ -17,7 +17,11 @@
         </aside>
     </section>
     <div class="all-theatres-list-div">
-        <p>Now playing at these theatres:</p>
+        <% if (theatres.length > 0) { %>
+            <p>Now playing at these theatres:</p>
+        <% } else {%>
+            <p>No current showings in your area.</p>
+        <% } %>
         <% theatres.forEach((theatre, index) => { %>
             <%- include ('../partials/alltheatreList', {oneTheatre: theatre}) %>
                 <% }) %>
