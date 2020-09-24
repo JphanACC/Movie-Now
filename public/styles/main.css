@@ -4,3 +4,11 @@ body {
     font-family: 'Comfortaa', cursive;
     font-size: 18px;
 }
+
+#navigation-link {
+    left: 25px;
+}
+
+ul {
+    background: #6d6d6d;
+}
