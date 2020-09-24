@@ -26,12 +26,12 @@ app.use(methodOverride("_method"));
 /* Routes */
 // NOTE Home Page
 app.get("/", (req, res) => {
-    db.Movie.find({}).populate("movies").exec(function(err, foundMovies) {
+        db.Movie.find({}).populate("movies").exec(function(err, foundMovies) {
         if (err) {
             console.log(err);
             return res.send(err);
         }
-        shuffle(foundMovies);
+        shuffle(foundMovies);    
         res.render("index", {
             title: 'Home Page Test',
             css: 'main',
@@ -63,7 +63,9 @@ app.use("/theatre-partials/", controllers.theatre);
 
 
 /* Server Listener*/
-app.listen(process.env.PORT || 3000);
+app.listen(PORT, function() {
+    console.log(`Server is listening to on http://localhost:${PORT}`);
+});
 
 /**
  * Fisher-Yates shuffle randomizes cards array
