@@ -5,18 +5,25 @@
 
     <body>
         <%- include ('../partials/head-nav') %>
-            <h1>Add a new movie to the database</h1>
-            <form action="/movie" method="POST">
-                Name: <input type="text" name="name" required/>
-                <br>Director: <input type="text" name="director" required/>
-                <br>Actors: <input type="text" name="actors" required/>
-                <br>Genre: <input type="text" name="genre" required/>
-                <br>Year Released: <input type="text" name="yearReleased" required/>
-                <br>Plot Summary: <textarea type="text" name="plotSummary" required></textarea>
-                <br>Image: <input type="text" name="images" />
+            <div class="container fullscreen">
+                <div class="row">
+                    <div class="col-lg-8">
 
-                <br><input type="submit" value="Create Movie" />
-            </form>
+                        <h1>Add a new movie to the database</h1>
+                        <form action="/movie" method="POST">
+                            Name: <input type="text" name="name" required/>
+                            <br>Director: <input type="text" name="director" required/>
+                            <br>Actors: <input type="text" name="actors" required/>
+                            <br>Genre: <input type="text" name="genre" required/>
+                            <br>Year Released: <input type="text" name="yearReleased" required/>
+                            <br>Plot Summary: <textarea type="text" name="plotSummary" required></textarea>
+                            <br>Image: <input type="text" name="images" />
+
+                            <br><input type="submit" value="Create Movie" />
+                        </form>
+                    </div>
+                </div>
+            </div>
     </body>
 
 </html>

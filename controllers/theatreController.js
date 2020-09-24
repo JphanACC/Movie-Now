@@ -63,7 +63,10 @@ router.get("/:id", (req, res) => {
     let moviesList = [];
     db.Theatre.findById(req.params.id).exec(function(err, foundTheatre) {
         if (err) return res.send(err);
-        db.Showing.find({ Theatre: foundTheatre._id, playing: true }).populate("Movie").exec((err, foundShowing) => {
+        db.Showing.find({
+            Theatre: foundTheatre._id,
+            playing: true
+        }).populate("Movie").exec((err, foundShowing) => {
             if (err) return res.send(err);
             foundShowing.forEach((showing, idx) => {
                 moviesList.push(showing.Movie);
@@ -74,22 +77,41 @@ router.get("/:id", (req, res) => {
             console.log(moviesList);
 
             res.render("theatre/show", {
-                title: "All Theatres List",
+                title: foundTheatre.name,
                 css: "main",
                 theatre: foundTheatre,
                 showing: foundShowing,
                 movies: moviesList,
             });
-        })
-    })
-})
+        });
+    });
+});
+
+//showings by movie route
+router.get("/showings/:id", (req, res) => {
+    db.Showing.find({Movie: req.params.id, playing: true}).populate("Movie Theatre").exec(function(err, foundShowings) {
+        if (err) {
+            console.log(err);
+            return res.send(err);
+        }
+        const context = {
+            title: `All showings for ${foundShowings[0].Movie.name}`,
+            css: "main",
+            showings: foundShowings,
+        };
+        res.render("theatre/filteredShowings", context);
+    });
+});
 
 //Ticket Confirmation Route
 router.get("/ticket/:id", (req, res) => {
     db.Showing.findById(req.params.id).populate("Theatre Movie").exec(function(err, foundShowing) {
         if (err) return res.send(err);
         console.log(foundShowing)
-        const { Theatre, Movie } = foundShowing;
+        const {
+            Theatre,
+            Movie
+        } = foundShowing;
 
         res.render("movie/ticket", {
             title: "Ticket Order Confirmation",

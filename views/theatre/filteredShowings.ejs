@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include ('../partials/head') %>
+</head>
+
+<body>
+    <%- include ('../partials/head-nav') %>
+        <div class="container">
+            <div class="row fullscreen">
+                <% if (showings.length > 0) { %>
+                    <div class="col-md-8">
+                        <h1>Available Showtimes: </h1>
+
+                        <ul class="list-group list-group-flush background-t">
+                            <% for( let index = 0; index < showings.length; index++ ) { %>
+                                <li class="list-group-item list-group-item-info">
+                                    <a href="../ticket/<%= showings[index]._id %>">
+                                    Movie Name: <%= showings[index].Movie.name %> <br>
+                                    Theatre: <%= showings[index].Theatre.name %> <br>
+                                    Showtime: <%= showings[index].time %> <br>
+                                    Price: $<%= showings[index].price %> 
+                                    </a>
+                                </li>
+                                <% } %>
+                        </ul>
+                    </div>
+                    <% } else { %>
+                        <h1>Sorry, this movie isn't showing in your area.</h1>
+                        <h2>We have many more great movies.</h2>
+                        <a href="../../">
+                            <button class="btn btn-primary">
+                            Back to Home Page
+                            </button>
+                        </a>
+                        <% } %>
+            </div>
+        </div>
+</body>
+
+</html>

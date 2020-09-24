@@ -4,23 +4,31 @@
 
     <body>
         <%- include ('../partials/head-nav') %>
-            <h1>Edit Existing showings</h1>
-            <form action="/showing?_method=PUT" method="POST">
-                Showings:
-                <% for( let index = 0; index < showings.length; index++ ) { %>
-                    <br><input type="checkbox" name=<%=`${showings[index]._id}`%> <% if (showings[index].playing) { %>
-                        checked
-                    <% } %>> <%= showings[index].time %>
-                <select name=<%=`${showings[index]._id}`%>> 
-                    <option value="<%= showings[index].Movie._id %>"><%= showings[index].Movie.name %> </option>
-                    <% for( let index = 0; index < movies.length; index++ ) { %>
-                        <option id="<%= index %>" value="<%= movies[index]._id %>"><%= movies[index].name %></option>
-                    <% } %>
-                    </select>
-                    Price: <input type="number" name=<%=`${showings[index]._id}`%> value=<%= showings[index].price %> />
-                <% } %>
-                <br><input type="submit" value="Edit showing(s)">
-            </form>
+            <div class="container fullscreen">
+                <div class="row">
+                    <div class="col-lg-8 background-t">
+                        <h1>Edit Existing showings</h1>
+                        <form action="/showing?_method=PUT" method="POST">
+                            Showings:
+                            <% for( let index = 0; index < showings.length; index++ ) { %>
+                                <br><input type="checkbox" name=<%=`${showings[index]._id}`%>
+                                <% if (showings[index].playing) { %>
+                                    checked
+                                    <% } %>>
+                                        <%= showings[index].time %>
+                                            <select name=<%=`${showings[index]._id}`%>> 
+                            <option value="<%= showings[index].Movie._id %>"><%= showings[index].Movie.name %> </option>
+                            <% for( let index = 0; index < movies.length; index++ ) { %>
+                                <option id="<%= index %>" value="<%= movies[index]._id %>"><%= movies[index].name %></option>
+                            <% } %>
+                            </select> Price: <input type="number" name=<%=`${showings[index]._id}`%> value=
+                                            <%= showings[index].price %> />
+                                                <% } %>
+                                                    <br><input type="submit" value="Edit showing(s)">
+                        </form>
+                    </div>
+                </div>
+            </div>
     </body>
 
 </html>

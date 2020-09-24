@@ -1,26 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <%- include ('../partials/head') %>
 </head>
+
 <body>
     <%- include ('../partials/head-nav') %>
-    <section id="movie-detail">
-        <h1><%= movie.name %></h1> 
-        <img src="<%= movie.images %>" alt="<%= movie.name %> poster">
-        <aside>
-            <p><%=movie.director%></p>
-            <p><%=movie.actors%></p>
-            <p><%=movie.genre%></p>
-            <p><%=movie.yearReleased%></p>
-            <p><%=movie.plotSummary%></p>
-        </aside>
-    </section>
-    <div class="all-theatres-list-div">
-        <p>Now playing at these theatres:</p>
-        <% theatres.forEach((theatre, index) => { %>
-            <%- include ('../partials/alltheatreList', {oneTheatre: theatre}) %>
-                <% }) %>
-    </div>
+        <div class="container">
+            <div class="row fullscreen">
+                <div class="col-sm-8">
+                    <div class="media background-ticket">
+                        <img src="<%= movie.images %>" alt="<%= movie.name %> poster" class="align-self-center mr-3" style="width: 250px;">
+                        <div class="media-body">
+                            <h5 class="mt-4" style="font-size: 25px; color: #428fd6 ">
+                                <%= movie.name %>
+                            </h5>
+                            <p><strong>Director(s):</strong>
+                                <%=movie.director%>
+                                    <br><strong>Actor(s):</strong>
+
+                                    <%=movie.actors%>
+                                        <br><strong>Genre(s):</strong>
+
+                                        <%=movie.genre%>
+                                            <br><strong>Year Released:</strong>
+
+                                            <%=movie.yearReleased%>
+                                                <br><strong>Plot Summary:</strong>
+
+                                                <%=movie.plotSummary%>
+                            </p>
+                            <% if (theatres.length >0 ) { %>
+                                <a href="/theatre/showings/<%= movie._id %>"><button class="btn btn-primary float-right">Book your tickets now!</button></a>
+                                <% } %>
+                        </div>
+
+                    </div>
+                    <p style="font-size: 24px; color: #9bcfff;"><strong>Trailer:</strong></p>
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="<%= movie.trailerUrl %>" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="all-theatres-list-div">
+                        <% if (theatres.length > 0) { %>
+                            <p>Now playing at these theatres:</p>
+                            <% } else {%>
+                                <p>No current showings in your area.</p>
+                                <% } %>
+                                    <% theatres.forEach((theatre, index) => { %>
+                                        <%- include ('../partials/alltheatreList', {oneTheatre: theatre}) %>
+                                            <% }) %>
+                    </div>
+                </div>
+            </div>
+        </div>
 </body>
+
 </html>
