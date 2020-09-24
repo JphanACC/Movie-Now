@@ -14,7 +14,9 @@
             <p><%=movie.genre%></p>
             <p><%=movie.yearReleased%></p>
             <p><%=movie.plotSummary%></p>
-            <a href="/theatre/showings/<%= movie._id %>"><button>Book your tickets now!</button></a>
+            <% if (theatres.length > 0) { %>
+                <a href="/theatre/showings/<%= movie._id %>"><button>Book your tickets now!</button></a>
+            <% } %>
         </aside>
     </section>
     <div class="all-theatres-list-div">
