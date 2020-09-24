@@ -5,30 +5,36 @@
 
     <body>
         <%- include ('../partials/head-nav') %>
-            <div class=movie-description>
-
-                <% console.log("theatre", theatre) %>
-                    <% console.log("movie", movie) %>
-                        <p>
-                            Selected Movie:
-                            <%= movie.name %>
-                                <br>Selected Theatre:
-                                <%= theatre.name %>
-                                    <br>Selected Screening:
-                                    <%= showing.time %>
-                        </p>
-                        <p>Plot Summary:
-                            <%= movie.plotSummary %>
-                        </p>
-
-            </div>
-            <div class=payment-information>
-                <p>Name: <input type="text" name="name" placeholder="Enter Your CardHolder Name">
-                    <br>Credit Card Number:<input type="text" name="ccnumber" placeholder="Enter Your Credit Card Name">
-                    <br>Expiration Date:<input type="text" name="expdate" placeholder="Enter Your Card's Expiration Date">
-                    <br> <input type="submit" value="Confirm Order">
-
-                </p>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="media">
+                            <img class="align-self-start mr-3" src="<%= movie.images %>" alt="movie-poster" style="width: 150px;">
+                            <div class="media-body">
+                                <p>
+                                    <strong>Selected Movie:</strong>
+                                    <%= movie.name %>
+                                        <br><strong>Selected Theatre:</strong>
+                                        <%= theatre.name %>
+                                            <br><strong>Selected Screening:</strong>
+                                            <%= showing.time %>
+                                </p>
+                                <p>Plot Summary:
+                                    <%= movie.plotSummary %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <div class=payment-information>
+                            <p>Name: <input type="text" name="name" placeholder="Enter Your CardHolder Name">
+                                <br>Credit Card Number:<input type="text" name="ccnumber" placeholder="Enter Your Credit Card Name">
+                                <br>Expiration Date:<input type="text" name="expdate" placeholder="Enter Your Card's Expiration Date">
+                                <br> <input type="submit" value="Confirm Order">
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
     </body>
 
