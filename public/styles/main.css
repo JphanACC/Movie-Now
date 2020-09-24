@@ -8,3 +8,7 @@ body {
 #navigation-link {
     left: 25px;
 }
+
+ul {
+    background: #6d6d6d;
+}
