@@ -1,11 +1,14 @@
-<div>
-    <img src="" alt="">
-    <p>Theatre Name:
-        <a href="/theatre/<%= oneTheatre._id%>">
-            <%= oneTheatre.name%>
-        </a>
-    </p>
-    <p>Theatre Location:
-        <%= oneTheatre.location%>
-    </p>
+<div class="media">
+    <img class="align-self-start mr-3" src="<%=oneTheatre.image%>" style="width: 180px;" alt="theater-img">
+    <div class="media-body">
+        <h5 class="mt-0">Theatre Name:
+            <a href="/theatre/<%= oneTheatre._id%>">
+                <%= oneTheatre.name%>
+            </a>
+        </h5>
+        <p>
+            Theatre Location:
+            <%= oneTheatre.location%>
+        </p>
+    </div>
 </div>

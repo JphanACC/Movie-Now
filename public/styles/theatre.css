@@ -1,0 +1,7 @@
+body {
+    /* background-image: url("/photos/background-img.jpg"); */
+    background-color: rgba(0, 0, 0, 0.8);
+    color: azure;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
