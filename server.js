@@ -7,6 +7,8 @@ const rateLimit = require("express-rate-limit");
 const helmet = require("helmet");
 const mongoSanitize = require("express-mongo-sanitize");
 const cors = require("cors");
+//logging
+const morgan = require("mongoose-morgan");
 
 
 /* internal modules*/
@@ -19,7 +21,7 @@ const app = express();
 /* Config */
 const PORT = 3000;
 const corsOptions = {
-    origin: [`http://localhost:${PORT}`],
+    //origin: [`http://localhost:${PORT}`],
     optionsSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
@@ -44,6 +46,9 @@ app.use(methodOverride("_method"));
 app.use(LIMIT);
 app.use(helmet());
 app.use(mongoSanitize());
+
+//logging TODO add morgan settings
+
 
 /* Routes */
 // NOTE Home Page
@@ -83,6 +88,16 @@ app.use("/showing", controllers.showing);
 
 app.use("/theatre-partials/", controllers.theatre);
 
+app.get("/*", notFound);
+app.use(methodNotAllowed);
+
+function methodNotAllowed(req, res) {
+    res.status(405).json({ message: "Method not allowed." });
+}
+
+function notFound(req, res) {
+    res.status(404).send("NOT FOUND");
+}
 
 /* Server Listener*/
 app.listen(PORT, function() {
