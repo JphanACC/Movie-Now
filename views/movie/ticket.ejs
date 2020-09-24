@@ -40,19 +40,20 @@
                                 <br>Expiration Date:
                                 <input type="text" name="expdate" class="form-control" placeholder="Enter Your Card's Expiration Date">
                                 <br>Ticket Quantity (Maximum of 8) - Adult:
-                                <select class="form-control" id="ticketQty">
-                                    <option>0</option>
+                                <select class="form-control ticketQty" id="adultQty">
+                                    <option value = "0">0</option>
                                     <% for( let index = 1; index <= 8; index++ ) { %>
-                                        <option><%= index %></option>
+                                        <option value = "<%= index*showing.price %>"><%= index %></option>
                                     <% } %>
-                                  </select>
-                                <br>Ticket Quantity (Maximum of 8) - Children:
-                                <select class="form-control" id="ticketQty">
-                                    <option>0</option>
+                                </select>
+                                <br>Ticket Quantity (Maximum of 8) - Children (Half Price):
+                                <select class="form-control ticketQty" id="childQty">
+                                    <option value = "0">0</option>
                                     <% for( let index = 1; index <= 8; index++ ) { %>
-                                        <option><%= index %></option>
+                                        <option value = "<%= (index*showing.price)/2 %>"><%= index %></option>
                                     <% } %>
-                                  </select>
+                                </select>
+                                <span id="totalPrice"></span>
                                 <br> <input type="submit" value="Confirm Order" class="btn btn-primary float-right">
                             </p>
                         </div>
