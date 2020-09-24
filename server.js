@@ -2,6 +2,8 @@
 const express = require("express");
 const methodOverride = require("method-override");
 const path = require("path");
+//security
+const rateLimit = require("express-rate-limit");
 
 
 /* internal modules*/
@@ -17,11 +19,21 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
 
+//rate limit settings
+const LIMIT = rateLimit({
+    max: 10000,
+    windowMS: 24*60*60*1000,
+    message: "You've seen too many movies today. Why not go for a walk?",
+});
+
 /* middleware */
 app.use(express.urlencoded({
     extended: true
 }));
 app.use(methodOverride("_method"));
+
+//rate limiter
+app.use(LIMIT);
 
 /* Routes */
 // NOTE Home Page
