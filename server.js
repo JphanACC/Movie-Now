@@ -37,7 +37,7 @@ app.get("/", (req, res) => {
             css: 'main',
             movies: foundMovies,
         });
-    })
+    });
 });
 
 
