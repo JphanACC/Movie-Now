@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const connectionString = "process.env.DATABASE_URL || 3000";
+const connectionString = process.env.DATABASE_URL || "mongodb://localhost:27017/movieNow";
 
 mongoose.connect(connectionString, {
     useNewUrlParser: true,

@@ -12,7 +12,7 @@ const controllers = require("./controllers");
 const app = express();
 
 /* Config */
-const PORT = 3000;
+const PORT = process.env.DATABASE_URL || 3000;
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
