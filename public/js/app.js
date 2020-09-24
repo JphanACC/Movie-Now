@@ -1,8 +1,8 @@
-const theatreSelect = $('.option')
+// const theatreSelect = $('.option')
 
-const changeTheatre = function(e) {
-    const option = e.target.id;
-    console.log(option);
-}
+// const changeTheatre = function(e) {
+//     const option = e.target.id;
+//     console.log(option);
+// }
 
-theatreSelect.on("select", changeTheatre);
+// theatreSelect.on("select", changeTheatre);
