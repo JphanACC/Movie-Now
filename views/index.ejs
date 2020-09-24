@@ -6,7 +6,7 @@
 
     <body>
         <%- include ('partials/head-nav') %>
-            <div class="container">
+            <div class="container fullscreen">
                 <p style="font-size: 35px;">Now Trending</p>
                 <div class="row">
                     <div class="col-lg-11">
@@ -62,16 +62,16 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row background-nowplaying mt-3">
                         <div class="col-md-4">
                             <p style="font-size: 35px;"> Now Playing</p>
                         </div>
                         <div class="row">
                             <% for( let index = 1; index < movies.length; index++ ) { %>
-                                <div class="col-sm-2">
+                                <div class="col-sm-2 background-nowplayingtiles">
                                     <a href="/movie/<%= movies[index]._id %>">
                                     <img src="<%= movies[index].images %>" alt="<%= movies[index].name %>" style="width: 150px;">
-                                        <%= movies[index].name %>
+                                        <p style="color:beige"><%= movies[index].name %></p>
                                     </a>
                                 </div>
                                 <% } %>
