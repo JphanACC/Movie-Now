@@ -6,19 +6,25 @@
 <body>
     <%- include ('../partials/head-nav') %>
     <div>
-        <p>Available showtimes</p>
-        <ul>
-            <% for( let index = 0; index < showings.length; index++ ) { %>
-            <li>
-                <a href="../ticket/<%= showings[index]._id %>">
-                    Movie name: <%= showings[index].Movie.name %> <br>
-                    Theatre: <%= showings[index].Theatre.name %> <br>
-                    Showtime: <%= showings[index].time %> <br>
-                    Price: <%= showings[index].price %> 
-                </a>
-            </li>
-            <% } %>
-        </ul>
+        <% if (showings.length > 0) { %>
+            <h1>Available showtimes</h1>
+            <ul>
+                <% for( let index = 0; index < showings.length; index++ ) { %>
+                    <li>
+                        <a href="../ticket/<%= showings[index]._id %>">
+                            Movie name: <%= showings[index].Movie.name %> <br>
+                            Theatre: <%= showings[index].Theatre.name %> <br>
+                            Showtime: <%= showings[index].time %> <br>
+                            Price: <%= showings[index].price %> 
+                        </a>
+                    </li>
+                    <% } %>
+                </ul>
+        <% } else { %>
+            <h1>Sorry, this movie isn't showing in your area.</h1>
+            <h2>We have many more great movies.</h2>
+            <a href="../../">Back to Home Page</a>
+        <% } %>
     </div>
 </body>
 </html>
