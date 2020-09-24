@@ -4,28 +4,32 @@
 
     <body>
         <%- include ('../partials/head-nav') %>
-            <div>
-                <p>Theatre description</p>
-                <%- include ('../partials/alltheatreList', {oneTheatre: theatre}) %>
-            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p>Theatre description</p>
+                        <%- include ('../partials/alltheatreList', {oneTheatre: theatre}) %>
+                    </div>
 
-            <div>
-                <p>Current movies and showtimes:</p>
-                <ul>
-                    <% for( let index = 0; index < movies.length; index++ ) { %>
-                        <% console.log(showing)%>
-                            <a href="ticket/<%= movies[index].showingID %>">
-                                <li>
-                                    Movie name:
-                                    <%= movies[index].name %>
-                                        <br>Price: $
-                                        <%= movies[index].price %>
-                                            <br>Show Time:
-                                            <%= movies[index].time %>
-                                </li>
-                            </a>
-                            <% } %>
-                </ul>
+                    <div class="col-sm-6">
+                        <p>Current movies and showtimes:</p>
+                        <ul class="list-group list-group-flush">
+                            <% for( let index = 0; index < movies.length; index++ ) { %>
+                                <% console.log(showing)%>
+                                    <a href="ticket/<%= movies[index].showingID %>">
+                                        <li class="list-group-item list-group-item-info"=>
+                                            Movie name:
+                                            <%= movies[index].name %>
+                                                <br>Price: $
+                                                <%= movies[index].price %>
+                                                    <br>Show Time:
+                                                    <%= movies[index].time %>
+                                        </li>
+                                    </a>
+                                    <% } %>
+                        </ul>
+                    </div>
+                </div>
             </div>
     </body>
 

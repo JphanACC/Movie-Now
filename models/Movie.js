@@ -8,6 +8,7 @@ const movieSchema = new mongoose.Schema({
     plotSummary: { type: String, required: [true, "You must provide a plot summary."] },
     actors: { type: String, required: [true, "You must provide at least one actor."] },
     images: { type: String, required: [true, "You must provide at least one image."] },
+    trailerUrl: { type: String, required: [false, "You must provide at least one url."] },
     Theatres: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Theatre",
