@@ -11,17 +11,17 @@
             <div class="row">
                 <% if (showings.length > 0) { %>
                     <div class="col-sm-3">
-                        <h1>Available showtimes: </h1>
+                        <h1>Available Showtimes: </h1>
                     </div>
                     <div class="col-sm-6">
                         <ul class="list-group list-group-flush">
                             <% for( let index = 0; index < showings.length; index++ ) { %>
                                 <li class="list-group-item list-group-item-info">
                                     <a href="../ticket/<%= showings[index]._id %>">
-                            Movie name: <%= showings[index].Movie.name %> <br>
+                            Movie Name: <%= showings[index].Movie.name %> <br>
                             Theatre: <%= showings[index].Theatre.name %> <br>
                             Showtime: <%= showings[index].time %> <br>
-                            Price: <%= showings[index].price %> 
+                            Price: $<%= showings[index].price %> 
                         </a>
                                 </li>
                                 <% } %>
