@@ -8,21 +8,20 @@
 <body>
     <%- include ('../partials/head-nav') %>
         <div class="container">
-            <div class="row">
+            <div class="row fullscreen">
                 <% if (showings.length > 0) { %>
-                    <div class="col-sm-3">
+                    <div class="col-md-8">
                         <h1>Available Showtimes: </h1>
-                    </div>
-                    <div class="col-sm-6">
-                        <ul class="list-group list-group-flush">
+
+                        <ul class="list-group list-group-flush background-t">
                             <% for( let index = 0; index < showings.length; index++ ) { %>
                                 <li class="list-group-item list-group-item-info">
                                     <a href="../ticket/<%= showings[index]._id %>">
-                            Movie Name: <%= showings[index].Movie.name %> <br>
-                            Theatre: <%= showings[index].Theatre.name %> <br>
-                            Showtime: <%= showings[index].time %> <br>
-                            Price: $<%= showings[index].price %> 
-                        </a>
+                                    Movie Name: <%= showings[index].Movie.name %> <br>
+                                    Theatre: <%= showings[index].Theatre.name %> <br>
+                                    Showtime: <%= showings[index].time %> <br>
+                                    Price: $<%= showings[index].price %> 
+                                    </a>
                                 </li>
                                 <% } %>
                         </ul>

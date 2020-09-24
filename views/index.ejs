@@ -6,39 +6,79 @@
 
     <body>
         <%- include ('partials/head-nav') %>
-            <div class="home-movie-trending">
-                <div class="home-movie-navigation">
-                    <nav>
-                        <a href="/movie">Show All Movies</a>
-                        <br><a href="/theatre">Show All Theatres</a>
-                    </nav>
-                </div>
-                <div class="home-movie-carousel-nav">
-                </div>
-                <div class="home-trending-body">
-                    <p class="home-movie-trending-text">Now Trending</p>
-                    <img src="" alt="">
-                    <div class="home-movie-description">
-                        <a href="/movie/<%= movies[0]._id %>">
-                            <%= movies[0].name %>
-                        </a>
-                        <p>
-                            <%= movies[0].plotSummary %>
-                        </p>
+            <div class="container fullscreen">
+                <p style="font-size: 35px;">Now Trending</p>
+                <div class="row">
+                    <div class="col-lg-11">
+                        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+
+                                <div class="carousel-item active">
+                                    <div class="media">
+                                        <img class="align-self-center mr-3" src="<%=movies[0].images%>" alt="movie-poster" style="width: 250px;">
+                                        <div class="media-body">
+                                            <h5 class="mt-0 mb-1">
+                                                <%= movies[0].name %>
+                                            </h5>
+                                            <p>
+                                                <%= movies[0].plotSummary %>
+                                            </p>
+                                            <a href="/movie/<%= movies[0]._id %>">
+                                                <button class="btn btn-primary">
+                                            More Details
+                                        </button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% for( let f = 1; f < 3; f++ ) { %>
+                                    <div class="carousel-item">
+                                        <div class="media">
+                                            <img class="align-self-center mr-3" src="<%=movies[f].images%>" alt="movie-poster" style="width: 250px;">
+                                            <div class="media-body">
+                                                <h5 class="mt-0 mb-1">
+                                                    <%= movies[f].name %>
+                                                </h5>
+                                                <p>
+                                                    <%= movies[f].plotSummary %>
+                                                </p>
+                                                <a href="/movie/<%= movies[f]._id %>">
+                                                    <button class="btn btn-primary">
+                                                    More Details
+                                                </button>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row background-nowplaying mt-3">
+                        <div class="col-md-4">
+                            <p style="font-size: 35px;"> Now Playing</p>
+                        </div>
+                        <div class="row">
+                            <% for( let index = 1; index < movies.length; index++ ) { %>
+                                <div class="col-sm-2 background-nowplayingtiles">
+                                    <a href="/movie/<%= movies[index]._id %>">
+                                    <img src="<%= movies[index].images %>" alt="<%= movies[index].name %>" style="width: 150px;">
+                                        <p style="color:beige"><%= movies[index].name %></p>
+                                    </a>
+                                </div>
+                                <% } %>
+
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="home-movie-nowplaying">
-                <p>Now Playing</p>
-                <div class="home-movie-playing-carousel">
-                    <% for( let index = 1; index < 7; index++ ) { %>
-                        <img src="<%= movies[index].images %> " alt="<%= movies[index].name %> ">
-                        <a href="/movie/<%= movies[index]._id %>">
-                            <%= movies[index].name %>
-                        </a>
-                        <% } %>
-                </div>
-            </div>
     </body>
 
 </html>
