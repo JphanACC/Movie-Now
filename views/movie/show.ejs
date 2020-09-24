@@ -32,7 +32,9 @@
 
                                                 <%=movie.plotSummary%>
                             </p>
-                            <a href="/theatre/showings/<%= movie._id %>"><button class="btn btn-primary float-right">Book your tickets now!</button></a>
+                            <% if (theatres.length >0 ) { %>
+                                <a href="/theatre/showings/<%= movie._id %>"><button class="btn btn-primary float-right">Book your tickets now!</button></a>
+                            <% } %>
                         </div>
 
                     </div>
