@@ -1,8 +1,11 @@
-const theatreSelect = $('.option')
+const $ticketQty = $(".ticketQty");
 
-const changeTheatre = function(e) {
-    const option = e.target.id;
-    console.log(option);
-}
+const updatePrice = function() {
+    const $totalPrice = $("#totalPrice");
+    const $adultQty = Number($("#adultQty").val());
+    const $childQty = Number($("#childQty").val());
+    const total = $adultQty+ $childQty;
+    $totalPrice.text(`Total Price: $${total}`); 
+};
 
-theatreSelect.on("select", changeTheatre);
+$ticketQty.on("change", updatePrice);
