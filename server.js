@@ -4,6 +4,9 @@ const methodOverride = require("method-override");
 const path = require("path");
 //security
 const rateLimit = require("express-rate-limit");
+const helmet = require("helmet");
+const mongoSanitize = require("express-mongo-sanitize");
+const cors = require("cors");
 
 
 /* internal modules*/
@@ -15,6 +18,11 @@ const app = express();
 
 /* Config */
 const PORT = 3000;
+const corsOptions = {
+    origin: [`http://localhost:${PORT}`],
+    optionsSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
@@ -32,8 +40,10 @@ app.use(express.urlencoded({
 }));
 app.use(methodOverride("_method"));
 
-//rate limiter
+//security
 app.use(LIMIT);
+app.use(helmet());
+app.use(mongoSanitize());
 
 /* Routes */
 // NOTE Home Page
