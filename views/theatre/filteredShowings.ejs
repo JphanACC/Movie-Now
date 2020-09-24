@@ -1,30 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <%- include ('../partials/head') %>
 </head>
+
 <body>
     <%- include ('../partials/head-nav') %>
-    <div>
-        <% if (showings.length > 0) { %>
-            <h1>Available showtimes</h1>
-            <ul>
-                <% for( let index = 0; index < showings.length; index++ ) { %>
-                    <li>
-                        <a href="../ticket/<%= showings[index]._id %>">
+        <div class="container">
+            <div class="row">
+                <% if (showings.length > 0) { %>
+                    <div class="col-sm-3">
+                        <h1>Available showtimes: </h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ul class="list-group list-group-flush">
+                            <% for( let index = 0; index < showings.length; index++ ) { %>
+                                <li class="list-group-item list-group-item-info">
+                                    <a href="../ticket/<%= showings[index]._id %>">
                             Movie name: <%= showings[index].Movie.name %> <br>
                             Theatre: <%= showings[index].Theatre.name %> <br>
                             Showtime: <%= showings[index].time %> <br>
                             Price: <%= showings[index].price %> 
                         </a>
-                    </li>
-                    <% } %>
-                </ul>
-        <% } else { %>
-            <h1>Sorry, this movie isn't showing in your area.</h1>
-            <h2>We have many more great movies.</h2>
-            <a href="../../">Back to Home Page</a>
-        <% } %>
-    </div>
+                                </li>
+                                <% } %>
+                        </ul>
+                    </div>
+                    <% } else { %>
+                        <h1>Sorry, this movie isn't showing in your area.</h1>
+                        <h2>We have many more great movies.</h2>
+                        <a href="../../">
+                            <button class="btn btn-primary">
+                            Back to Home Page
+                            </button>
+                        </a>
+                        <% } %>
+            </div>
+        </div>
 </body>
+
 </html>

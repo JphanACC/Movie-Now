@@ -19,18 +19,41 @@
                                             <br><strong>Selected Screening:</strong>
                                             <%= showing.time %>
                                 </p>
-                                <p>Plot Summary:
+                                <p><strong>Plot Summary:</strong>
                                     <%= movie.plotSummary %>
                                 </p>
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        <a href="/theatre/<%= theatre._id %>"><button class="btn btn-primary">Back to selected Theatre</button></a></div>
+                                    <div class="col-sm-5">
+                                        <a href="/movie/<%= movie._id %>"><button class="btn btn-primary float-right">Back to selected Movie</button></a></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-5">
-                        <div class=payment-information>
-                            <p>Name: <input type="text" name="name" placeholder="Enter Your CardHolder Name">
-                                <br>Credit Card Number:<input type="text" name="ccnumber" placeholder="Enter Your Credit Card Name">
-                                <br>Expiration Date:<input type="text" name="expdate" placeholder="Enter Your Card's Expiration Date">
-                                <br> <input type="submit" value="Confirm Order">
+                        <div class="form-group">
+                            <p>Name:
+                                <input type="text" class="form-control" name="name" placeholder="Enter Your CardHolder Name">
+                                <br>Credit Card Number:
+                                <input type="text" class="form-control" name="ccnumber" placeholder="Enter Your Credit Card Name">
+                                <br>Expiration Date:
+                                <input type="text" name="expdate" class="form-control" placeholder="Enter Your Card's Expiration Date">
+                                <br>Ticket Quantity (Maximum of 8) - Adult:
+                                <select class="form-control" id="ticketQty">
+                                    <option>0</option>
+                                    <% for( let index = 1; index <= 8; index++ ) { %>
+                                        <option><%= index %></option>
+                                    <% } %>
+                                  </select>
+                                <br>Ticket Quantity (Maximum of 8) - Children:
+                                <select class="form-control" id="ticketQty">
+                                    <option>0</option>
+                                    <% for( let index = 1; index <= 8; index++ ) { %>
+                                        <option><%= index %></option>
+                                    <% } %>
+                                  </select>
+                                <br> <input type="submit" value="Confirm Order" class="btn btn-primary float-right">
                             </p>
                         </div>
                     </div>

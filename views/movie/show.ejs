@@ -34,11 +34,11 @@
                             </p>
                             <% if (theatres.length >0 ) { %>
                                 <a href="/theatre/showings/<%= movie._id %>"><button class="btn btn-primary float-right">Book your tickets now!</button></a>
-                            <% } %>
+                                <% } %>
                         </div>
 
                     </div>
-                    <h1 class="display-4">Trailer: </h1>
+                    <p style="font-size: 24px; color: #428fd6;"><strong>Trailer:</strong> </p>
                     <div class="embed-responsive embed-responsive-16by9">
                         <iframe class="embed-responsive-item" src="<%= movie.trailerUrl %>" allowfullscreen></iframe>
                     </div>
