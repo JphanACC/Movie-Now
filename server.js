@@ -12,7 +12,7 @@ const controllers = require("./controllers");
 const app = express();
 
 /* Config */
-const PORT = 3000;
+const PORT = process.env.DATABASE_URL || 3000;
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
@@ -26,18 +26,18 @@ app.use(methodOverride("_method"));
 /* Routes */
 // NOTE Home Page
 app.get("/", (req, res) => {
-        db.Movie.find({}).populate("movies").exec(function(err, foundMovies) {
+    db.Movie.find({}).populate("movies").exec(function(err, foundMovies) {
         if (err) {
             console.log(err);
             return res.send(err);
         }
-        shuffle(foundMovies);    
+        shuffle(foundMovies);
         res.render("index", {
             title: 'Home Page Test',
             css: 'main',
             movies: foundMovies,
         });
-    })
+    });
 });
 
 
@@ -63,9 +63,7 @@ app.use("/theatre-partials/", controllers.theatre);
 
 
 /* Server Listener*/
-app.listen(PORT, function() {
-    console.log(`Server is listening to on http://localhost:${PORT}`);
-});
+app.listen(process.env.PORT || 3000);
 
 /**
  * Fisher-Yates shuffle randomizes cards array
