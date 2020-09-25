@@ -66,13 +66,10 @@ router.get("/:id", (req, res) => {
         db.Showing.find({
             Theatre: foundTheatre._id,
             playing: true
-        }).populate("Movie").exec((err, foundShowing) => {
+        }).populate("Movie").exec((err, foundShowings) => {
             if (err) return res.send(err);
-            foundShowing.forEach((showing, idx) => {
+            foundShowings.forEach((showing, idx) => {
                 moviesList.push(showing.Movie);
-                moviesList[idx].time = showing.time;
-                moviesList[idx].price = showing.price;
-                moviesList[idx].showingID = showing._id;
             });
             console.log(moviesList);
 
@@ -80,7 +77,7 @@ router.get("/:id", (req, res) => {
                 title: foundTheatre.name,
                 css: "main",
                 theatre: foundTheatre,
-                showing: foundShowing,
+                showings: foundShowings,
                 movies: moviesList,
             });
         });

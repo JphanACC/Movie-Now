@@ -15,18 +15,17 @@
                         <p>Current movies and showtimes:</p>
                         <ul class="list-group list-group-flush">
                             <% for( let index = 0; index < movies.length; index++ ) { %>
-                                <% console.log(showing)%>
-                                    <a href="ticket/<%= movies[index].showingID %>">
-                                        <li class="list-group-item list-group-item-info"=>
-                                            Movie name:
-                                            <%= movies[index].name %>
-                                                <br>Price: $
-                                                <%= movies[index].price %>
-                                                    <br>Show Time:
-                                                    <%= movies[index].time %>
-                                        </li>
-                                    </a>
-                                    <% } %>
+                                <a href="ticket/<%= showings[index].Movie._id %>">
+                                    <li class="list-group-item list-group-item-info"=>
+                                    Movie name:
+                                    <%= showings[index].Movie.name %>
+                                    <br>Price: $
+                                    <%= showings[index].price %>
+                                    <br>Show Time:
+                                    <%= showings[index].time %>
+                                    </li>
+                                </a>
+                            <% } %>
                         </ul>
                     </div>
                 </div>
