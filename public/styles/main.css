@@ -17,7 +17,12 @@ ul {
 }
 
 .fullscreen {
-    height: 90.6vh;
+    height: 100vh;
+}
+
+.fullscreenHeight {
+    width: auto;
+    height: 100%;
 }
 
 .background-t {
@@ -28,13 +33,13 @@ ul {
 
 .background-nowplaying {
     background-color: rgba(14, 14, 14, 0.781);
-    padding: 25px;
+    padding: 15px;
     border-radius: 15px;
 }
 
 .background-nowplayingtiles {
     background-color: rgba(20, 20, 20, 0.966);
-    padding: 2px;
+    padding: 1px;
     border-radius: 10px;
     text-align: center;
     text-align-last: center;
@@ -44,4 +49,12 @@ ul {
     background-color: rgba(14, 14, 14, 0.781);
     padding: 20px;
     border-radius: 15px;
+}
+
+.background-movieEachLoop {
+    background-color: rgba(20, 20, 20, 0.787);
+    padding: 3px;
+    border-radius: 10px;
+    text-align: center;
+    text-align-last: center;
 }

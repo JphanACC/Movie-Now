@@ -64,17 +64,22 @@
                     </div>
                     <div class="row background-nowplaying mt-3">
                         <div class="col-md-4">
-                            <p style="font-size: 35px;"> Now Playing</p>
+                            <p style="font-size: 35px;">Critic's Picks</p>
                         </div>
                         <div class="row">
-                            <% for( let index = 1; index < movies.length; index++ ) { %>
-                                <div class="col-sm-2">
-                                    <a href="/movie/<%= movies[index]._id %>">
+                            <% for( let index = 0; index < movies.length; index++ ) { %>
+                                <% if (index == 6) { %>
+                                    <% break; %>
+                                        <% } %>
+                                            <div class="col-sm-2">
+                                                <a href="/movie/<%= movies[index]._id %>">
                                     <img src="<%= movies[index].images %>" alt="<%= movies[index].name %>" style="width: 150px;">
                                         <p style="color:beige"><%= movies[index].name %></p>
                                     </a>
-                                </div>
-                                <% } %>
+                                            </div>
+
+
+                                            <% } %>
 
                         </div>
                     </div>
