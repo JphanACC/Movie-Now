@@ -86,7 +86,7 @@ router.get("/:id", (req, res) => {
 
 //showings by movie route
 router.get("/showings/:id", (req, res) => {
-    db.Showing.find({Movie: req.params.id, playing: true}).populate("Movie Theatre").exec(function(err, foundShowings) {
+    db.Showing.find({ Movie: req.params.id, playing: true }).populate("Movie Theatre").exec(function(err, foundShowings) {
         if (err) {
             console.log(err);
             return res.send(err);
@@ -105,17 +105,14 @@ router.get("/ticket/:id", (req, res) => {
     db.Showing.findById(req.params.id).populate("Theatre Movie").exec(function(err, foundShowing) {
         if (err) return res.send(err);
         console.log(foundShowing)
-        const {
-            Theatre,
-            Movie
-        } = foundShowing;
+
 
         res.render("movie/ticket", {
             title: "Ticket Order Confirmation",
             css: "main",
             showing: foundShowing,
-            theatre: Theatre,
-            movie: Movie,
+            theatre: foundShowing.Theatre,
+            movie: foundShowing.Movie,
         })
 
     })
