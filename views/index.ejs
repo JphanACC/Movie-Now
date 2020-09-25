@@ -6,9 +6,9 @@
 
     <body>
         <%- include ('partials/head-nav') %>
-            <div class="container fullscreen">
+            <div class="container">
                 <p style="font-size: 35px;">Now Trending</p>
-                <div class="row">
+                <div class="row fullscreen">
                     <div class="col-lg-11">
                         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
@@ -68,7 +68,7 @@
                         </div>
                         <div class="row">
                             <% for( let index = 1; index < movies.length; index++ ) { %>
-                                <div class="col-sm-2 background-nowplayingtiles">
+                                <div class="col-sm-2">
                                     <a href="/movie/<%= movies[index]._id %>">
                                     <img src="<%= movies[index].images %>" alt="<%= movies[index].name %>" style="width: 150px;">
                                         <p style="color:beige"><%= movies[index].name %></p>
