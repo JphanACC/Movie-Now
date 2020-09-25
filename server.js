@@ -33,7 +33,7 @@ app.get("/", (req, res) => {
         }
         shuffle(foundMovies);
         res.render("index", {
-            title: 'Home Page Test',
+            title: 'Movie Now',
             css: 'main',
             movies: foundMovies,
         });
