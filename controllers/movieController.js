@@ -6,21 +6,25 @@ const db = require("../models");
 //show route
 router.get("/:id", (req, res) => {
     const movieId = req.params.id;
+
     db.Movie.findById(movieId, (err, foundMovie) => {
         if (err) {
             console.log(err);
             return res.send(err);
         }
+
         db.Showing.find({ Movie: movieId, playing: true }).distinct("Theatre").exec(function(err, theatreId) {
             if (err) {
                 console.log(err);
                 return res.send(err);
             }
+
             db.Theatre.find({ _id: { $in: theatreId } }, function(err, allTheatres) {
                 if (err) {
                     console.log(err);
                     return res.send(err);
                 }
+
                 const context = {
                     movie: foundMovie,
                     title: foundMovie.name,

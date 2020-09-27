@@ -12,10 +12,13 @@ router.get("/", (req, res) => {
 router.get("/newMovie", (req, res) => {
     res.render("admin/newMovie", { title: "Make a New Movie", css: "main" });
 });
+
 //Show Select Movie
 router.get("/selectMovie", (req, res) => {
     db.Movie.find({}, (error, foundMovies) => {
+
         if (error) return res.send(error);
+
         const context = {
             movies: foundMovies,
         };
@@ -73,7 +76,7 @@ router.get("/editShowing/:id", (req, res) => {
             console.log(err);
             return res.send(err);
         }
-        db.Showing.find({Theatre: theatreId}).populate("Movie").exec((err, foundShowings) => {
+        db.Showing.find({ Theatre: theatreId }).populate("Movie").exec((err, foundShowings) => {
             if (err) {
                 console.log(err);
                 return res.send(err);

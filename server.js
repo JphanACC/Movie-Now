@@ -7,6 +7,9 @@ const path = require("path");
 /* internal modules*/
 const db = require("./models");
 const controllers = require("./controllers");
+const routes = require("./routes");
+
+const { shuffle } = require("./utils/utils.js"); // <- utils are a great way to store functionality for use across the app
 
 /*Instanced Modules */
 const app = express();
@@ -26,7 +29,7 @@ app.use(methodOverride("_method"));
 /* Routes */
 // NOTE Home Page
 app.get("/", (req, res) => {
-    db.Movie.find({}).populate("movies").exec(function(err, foundMovies) {
+    db.Movie.find({}).exec(function(err, foundMovies) {
         if (err) {
             console.log(err);
             return res.send(err);
@@ -41,6 +44,7 @@ app.get("/", (req, res) => {
 });
 
 
+// for all testing routes remove before submission
 app.get("/template", (req, res) => {
     res.render("partials/alltheatreList", {
         title: 'Theatre List',
@@ -57,27 +61,10 @@ app.use("/theatre", controllers.theatre);
 
 app.use("/movie", controllers.movie);
 
-app.use("/showing", controllers.showing);
+app.use("/showing", routes.showings); // <- this uses the new routes addition
 
-app.use("/theatre-partials/", controllers.theatre);
+app.use("/theatre-partials/", controllers.theatre); // <- remove testing
 
 
 /* Server Listener*/
 app.listen(process.env.PORT || 3000);
-
-/**
- * Fisher-Yates shuffle randomizes cards array
- * @author Mike Bostock - https://bost.ocks.org/mike/shuffle/
- */
-const shuffle = function(array) {
-    let length = array.length;
-    let element;
-    let index;
-    while (length) {
-        index = Math.floor(Math.random() * length--);
-        element = array[length];
-        array[length] = array[index];
-        array[index] = element;
-    }
-    return array;
-};

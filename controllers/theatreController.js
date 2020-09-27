@@ -102,7 +102,7 @@ router.get("/showings/:id", (req, res) => {
 
 //Ticket Confirmation Route
 router.get("/ticket/:id", (req, res) => {
-    db.Showing.findById(req.params.id).populate("Theatre Movie").exec(function(err, foundShowing) {
+    db.Showing.findById(req.params.id).populate("Theatre Movie").sort("-createdAt").exec(function(err, foundShowing) {
         if (err) return res.send(err);
         console.log(foundShowing)
 

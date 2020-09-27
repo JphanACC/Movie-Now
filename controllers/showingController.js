@@ -1,11 +1,8 @@
-const express = require("express");
-const { movie } = require(".");
-const router = express.Router();
-
+const { movie } = require("."); // <- not being used
 const db = require("../models");
 
 //Create new Listing
-router.post("/", (req, res) => {
+const create = (req, res) => {
     console.log(req.body);
     for (const key in req.body.playing) {
         console.log(key);
@@ -19,14 +16,13 @@ router.post("/", (req, res) => {
             }
             db.Showing.create(newShowing, (err, createdShowing) => {
                 if (err) return res.send(err);
-                console.log("Debug 3");
             });
         }
     }
     res.redirect("/admin/");
-});
+}
 
-router.put("/", (req,res) => {
+const update = (req, res) => {
     console.log(req.body);
     for (const key in req.body) {
         console.log(key);
@@ -36,7 +32,7 @@ router.put("/", (req,res) => {
                 Movie: req.body[key][1],
                 playing: true,
             }
-            db.Showing.findByIdAndUpdate(key, editShowing, {new: true}, (err, updatedShowing) => {
+            db.Showing.findByIdAndUpdate(key, editShowing, { new: true }, (err, updatedShowing) => {
                 if (err) {
                     console.log(err);
                     res.send(err);
@@ -47,7 +43,7 @@ router.put("/", (req,res) => {
             const editShowing = {
                 playing: false,
             }
-            db.Showing.findByIdAndUpdate(key, editShowing, {new: true}, (err, updatedShowing) => {
+            db.Showing.findByIdAndUpdate(key, editShowing, { new: true }, (err, updatedShowing) => {
                 if (err) {
                     console.log(err);
                     res.send(err);
@@ -57,6 +53,9 @@ router.put("/", (req,res) => {
         }
     }
     res.redirect("/admin");
-})
+}
 
-module.exports = router;
+module.exports = {
+    create,
+    update
+};
