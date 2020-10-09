@@ -44,15 +44,6 @@ app.get("/", (req, res) => {
 });
 
 
-// for all testing routes remove before submission
-app.get("/template", (req, res) => {
-    res.render("partials/alltheatreList", {
-        title: 'Theatre List',
-        css: 'main'
-    });
-});
-
-
 //Admin Home
 app.use("/admin", controllers.admin);
 
@@ -62,8 +53,6 @@ app.use("/theatre", controllers.theatre);
 app.use("/movie", controllers.movie);
 
 app.use("/showing", routes.showings); // <- this uses the new routes addition
-
-app.use("/theatre-partials/", controllers.theatre); // <- remove testing
 
 
 /* Server Listener*/
